@@ -1,0 +1,37 @@
+Apr 13, 2025 · 5 min read · Web History
+
+# From Static Pages to Social Feeds: Understanding the Web Eras
+
+The internet has never stood still. Since its earliest days as a network of text-heavy documents, the web has gone through radical transformations — not just in how it looks, but in how it works, who controls it, and what it expects from the people using it. Understanding these shifts isn't just a history lesson. It gives you a sharper sense of where we came from, why the web looks the way it does today, and where it might be heading next.
+
+# Web 1.0 — The Read-Only Web (1991–2004)
+
+The earliest version of the web was a quiet place. Pages were built by hand in raw HTML, hosted on personal servers or university networks, and had one job: display information. There was no login button, no comment section, no algorithm deciding what you saw next. If you wanted to put something online, you needed to know how to code it yourself.
+
+This era had a strange charm to it. Websites had personality — tiled backgrounds, visitor counters, blinking text, MIDI music that would auto-play the moment you landed. There was no design system or brand consistency to worry about. People just built things because they wanted to, and the web was full of weird, personal, one-of-a-kind spaces.
+
+The limitation was obvious though: users could only read. The web was a library, not a conversation.
+
+# Web 2.0 — The Read-Write Web (2004–Present)
+
+The shift to Web 2.0 changed everything. Platforms like YouTube, MySpace, Facebook, and later Twitter handed the keyboard to the user. Suddenly anyone could publish, comment, react, share, and connect — no coding required. The web became participatory.
+
+This era gave rise to the creator economy, social media, user-generated content, and a new kind of web job: the UX designer. Interfaces had to become intuitive for people who weren't technically savvy. Sites had to be fast, responsive, and engaging. Design started to matter at a level it never had before.
+
+The tradeoff, however, was centralization. The open, chaotic, personal web of the early days gave way to a handful of massive platforms. Your content lived on their servers, played by their rules, and fed their business model. The user became the product.
+
+# Web 3.0 — The Broken Promise (And Why It Didn't Deliver)
+
+Web 3.0 arrived with a bold promise: decentralization. No more platforms owning your data, no more middlemen taking cuts, no more waking up to find a company changed the rules on you overnight. Blockchain, smart contracts, NFTs, crypto wallets — the pitch was that users would finally own their piece of the internet.
+
+In practice, it became one of the most overhyped and predatory eras in tech history. The space was flooded almost immediately with scams, rug pulls, and get-rich-quick schemes dressed up in technical language designed to sound legitimate. NFT projects promised communities and roadmaps, took people's money, and vanished. Crypto influencers pumped coins they were quietly paid to promote. Billion-dollar platforms collapsed overnight taking user funds with them.
+
+The deeper problem is that the actual user experience never got good enough for regular people to care. Wallets are confusing, transactions cost fees that make no sense, and the "ownership" being sold often turned out to be a link to an image hosted on a regular server that could go down at any time. The technology is real — but it largely got captured by speculation before it could become genuinely useful.
+
+What's left is a quieter, more honest conversation about what decentralization could actually look like — federated social networks like Mastodon, open protocols, and the indie web movement are all more grounded attempts at the same goal. They don't promise you'll get rich. They just try to give the web back some of the openness it lost in the Web 2.0 era.
+
+# What This Means for Developers Today
+
+Each era didn't erase the last — it layered on top of it. Static HTML is still how every page is built at its core. Web 2.0 patterns like social login, comment systems, and dynamic feeds are everywhere. And the honest parts of the Web 3.0 conversation — about ownership, open protocols, and user control — are quietly making their way into real products.
+
+As a developer, understanding these shifts helps you think beyond the syntax. It puts the tools you use in context and gives you a clearer picture of the problems they were built to solve — and the new ones they might create.

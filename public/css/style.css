@@ -1,0 +1,524 @@
+/* ============================================================
+   1. TOKENS
+   ============================================================ */
+:root {
+  --bg:        #0d0d0f;
+  --primary:   #7a1f27;   /* button fill                       */
+  --active:    #e63946;   /* button hover / accents            */
+  --flavor:    #c9cba3;   /* terminal khaki                    */
+  --stark:     #ffffff;
+  --subtle:    #8a8a92;
+  --line:      #2a2a31;
+
+  --font-display: "Big Shoulders Display", sans-serif;
+  --font-mono:    "IBM Plex Mono", monospace;
+
+  --skew: -0.65rad;
+
+  /* LAYOUT RHYTHM — one source of truth for the split.
+     Left column (title + menu) gets a fixed lane; the terminal
+     gets everything to the right of it. Change --left-lane and
+     both sides stay in sync. */
+  --left-lane: min(620px, 58vw);
+  --footer-h: 34px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background-color: var(--bg);
+  color: var(--stark);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  overflow: hidden;
+}
+
+/* ============================================================
+   2. GRID BACKGROUND — drifts to the TOP-RIGHT, always on.
+   background-position: +X slides the pattern right, -Y slides
+   it up. 4800px over 240s = 20px/sec — clearly perceptible.
+   NOTE: no prefers-reduced-motion gate here on purpose;
+   CompCon doesn't gate either. The motion IS the design.
+   ============================================================ */
+#wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-image:
+    linear-gradient(rgba(230, 57, 70, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(230, 57, 70, 0.09) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: grid-scroll 240s linear infinite;
+}
+@keyframes grid-scroll {
+  100% { background-position: 4800px -4800px; }   /* → top-right */
+}
+
+/* ============================================================
+   3. LEFT COLUMN — header + menu live in a flex column that
+   fills the viewport height minus the footer. The menu then
+   uses space-evenly, which is exactly how CompCon spreads its
+   buttons (v-row justify space-between, height 100%).
+   ============================================================ */
+#left-col {
+  position: relative;
+  z-index: 5;
+  width: var(--left-lane);
+  height: calc(100vh - var(--footer-h));
+  display: flex;
+  flex-direction: column;
+  padding: 32px 0 24px 44px;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(36px, 4.2vw, 58px);   /* capped so it never
+                                            crosses into the
+                                            terminal's lane     */
+  line-height: 0.9;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.wordmark span { color: var(--active); }
+
+.tagline {
+  color: var(--subtle);
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+/* Menu fills the leftover height; items spread evenly in it */
+#menu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 24px;
+}
+
+/* Each item reserves button height + help-text line below it */
+.menu-item { position: relative; height: 96px; }
+
+.btn-main {
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  height: 70px;
+  width: calc(var(--left-lane) - 60px);
+  left: -74px;                /* bleed off-screen; 44px page pad
+                                 + 30px extra, like theirs       */
+  transform: skew(var(--skew));
+  background: var(--primary);
+  z-index: 5;
+  transition: background 0.45s ease-in-out;
+  outline: none;
+  border: none;
+  display: block;
+}
+.btn-main:hover,
+.btn-main:focus-visible { background: var(--active); }
+
+/* Detached trailing bars that slide out on hover */
+.btn-main::before,
+.btn-main::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 70px;
+  background: var(--bg);
+  transition: all 0.45s ease-in-out;
+}
+.btn-main::before { left: calc(100% - 30px); width: 8px; }
+.btn-main::after  { left: calc(100% - 14px); width: 12px; }
+.btn-main:hover::before,
+.btn-main:focus-visible::before { left: calc(100% + 30px); background: var(--active); }
+.btn-main:hover::after,
+.btn-main:focus-visible::after  { left: calc(100% + 8px);  background: var(--active); }
+
+/* Upright label inside the skewed shape */
+.unskew {
+  transform: skew(calc(var(--skew) * -1));
+  position: absolute;
+  left: 106px;                /* clears the off-screen bleed     */
+  top: 12px;
+  color: var(--stark);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.unskew::before {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--bg);
+  transform-origin: bottom right;
+  transform: scaleX(0);
+  transition: transform 0.45s ease;
+}
+.btn-main:hover .unskew::before,
+.btn-main:focus-visible .unskew::before {
+  transform-origin: bottom left;
+  transform: scaleX(1);
+}
+
+/* Help text BELOW the button, indented — matches CompCon, where
+   it sits under the bar rather than beside it */
+.help-text {
+  position: absolute;
+  top: 76px;
+  left: 40px;
+  color: var(--subtle);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0.6;
+}
+
+/* ============================================================
+   4. TERMINAL — occupies everything right of --left-lane, with
+   clear top/bottom margins so it doesn't crowd the edges.
+   ============================================================ */
+#term {
+  position: absolute;
+  top: 24px;
+  right: 16px;
+  bottom: calc(var(--footer-h) + 16px);
+  left: calc(var(--left-lane) + 24px);
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* The scroll container holds ONE row: ruler | text | ruler.
+   Because the rulers are INSIDE the scrolling row (like
+   CompCon's), the row grows as text is typed, the scales
+   stretch with it, and the end caps always sit level with the
+   newest line — the pointer literally follows the typing. */
+#term-scroll {
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 4px 6px;
+}
+#term-scroll::-webkit-scrollbar { display: none; }
+
+.term-row {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;   /* rulers stretch to the row's height */
+  /* NO min-height: the row is exactly as tall as the typed
+     text, so the scales grow with every line and the end caps
+     always sit level with the newest character. */
+}
+
+/* Sidebar = a column: the measurement scale stretches, and a
+   pixel-art end cap sits at the bottom — same anatomy as
+   CCLog's scale_1.png + sb_l/sb_r.png, redrawn as our own art.
+   The scale is an SVG tile (17x100) that repeats vertically:
+   dashed header, center spine, crossbar tick every 10px, a
+   wider one at 50. */
+.ruler-col {
+  width: 17px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+}
+.ruler {
+  flex: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17' height='100' shape-rendering='crispEdges'%3E%3Cg fill='%238a8a92'%3E%3Crect x='0' y='0' width='2' height='1'/%3E%3Crect x='3' y='0' width='11' height='1'/%3E%3Crect x='15' y='0' width='2' height='1'/%3E%3Crect x='8' y='1' width='1' height='99'/%3E%3Crect x='6' y='10' width='5' height='1'/%3E%3Crect x='6' y='20' width='5' height='1'/%3E%3Crect x='6' y='30' width='5' height='1'/%3E%3Crect x='6' y='40' width='5' height='1'/%3E%3Crect x='5' y='50' width='7' height='1'/%3E%3Crect x='6' y='60' width='5' height='1'/%3E%3Crect x='6' y='70' width='5' height='1'/%3E%3Crect x='6' y='80' width='5' height='1'/%3E%3Crect x='6' y='90' width='5' height='1'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-y;
+  opacity: 0.55;
+}
+.cap {
+  flex: none;
+  width: 17px;
+  height: 16px;
+  margin-top: 6px;
+  opacity: 0.85;
+}
+.cap-left  path { fill: var(--subtle); }  /* hatch + DSW glyph  */
+.cap-right path { fill: var(--active); }  /* the pointer, in red */
+
+#term-out {
+  flex: 1;
+  min-width: 0;           /* lets long lines wrap inside flex   */
+  color: var(--flavor);
+  opacity: 0.7;
+  font-size: 13px;
+  line-height: 1.6;             /* more air between lines        */
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+#term-out .accent { color: var(--active); }
+#term-out .stark  { color: var(--stark); }
+#term-out pre {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.15;
+  color: var(--active);
+  margin: 6px 0;
+}
+
+/* Cursor lives INSIDE the output now, so it always sits right
+   after the last typed character instead of below the block */
+#cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: var(--flavor);
+  vertical-align: -2px;
+  margin-left: 2px;
+  animation: blink 0.9s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ============================================================
+   5. CASCADE STATE — the rampancy intro.
+   body starts with class "cascade": everything is dark, the
+   terminal sits centered. On reboot (first click), the class
+   is removed and CSS transitions glide everything home:
+   terminal to the right, menu in from the left, footer up.
+   ============================================================ */
+#blackout {
+  position: fixed;
+  inset: 0;
+  background: #060607;
+  z-index: 2;                    /* above grid, below terminal   */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.2s ease 0.3s;
+}
+body.cascade #blackout { opacity: 1; }
+body.cascade { cursor: pointer; }   /* the whole page is the
+                                       reboot button            */
+
+#term { z-index: 3; }               /* rides above the blackout */
+
+/* Terminal position is TRANSITIONED between its two anchors.
+   left/right/top/bottom all animate, so removing .cascade
+   makes it glide from center to its home on the right. */
+#term {
+  transition: left 0.9s ease, right 0.9s ease,
+              top 0.9s ease, bottom 0.9s ease;
+}
+body.cascade #term {
+  left:  max(24px, calc(50vw - 380px));
+  right: max(24px, calc(50vw - 380px));
+  top: 10vh;
+  bottom: 14vh;
+}
+
+/* Menu + title wait offstage left, then slide in AFTER the
+   terminal starts moving (0.5s delay staggers the choreography) */
+#left-col {
+  transition: opacity 0.7s ease 0.5s, transform 0.7s ease 0.5s;
+}
+body.cascade #left-col {
+  opacity: 0;
+  transform: translateX(-80px);
+  pointer-events: none;
+  transition: none;              /* snap hidden instantly on load */
+}
+
+footer { transition: transform 0.6s ease 0.6s; }
+body.cascade footer { transform: translateY(110%); }
+
+/* Glitched text during the cascade */
+.glitch {
+  color: var(--active);
+  text-shadow: 1px 0 rgba(230, 57, 70, 0.6), -1px 0 rgba(201, 203, 163, 0.4);
+  animation: glitch-jitter 0.12s steps(2) infinite;
+  display: inline-block;
+}
+@keyframes glitch-jitter {
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(1px, -1px) skewX(-2deg); }
+  100% { transform: translate(-1px, 0); }
+}
+
+/* ============================================================
+   TERMINAL IMAGES — the Marathon treatment.
+   Red duotone via grayscale -> sepia -> hue-rotate into the
+   brand red, then scanlines + vignette layered on top with a
+   pseudo-element. The photo reads like a security still.
+   ============================================================ */
+.term-img {
+  position: relative;
+  width: min(280px, 65%);
+  margin: 14px 0;
+  padding: 6px;
+  border: 1px solid var(--line);
+  background: #08080a;
+}
+.term-img img {
+  display: block;
+  width: 100%;
+  filter: grayscale(1) contrast(1.18) brightness(0.92)
+          sepia(1) hue-rotate(-48deg) saturate(2.8);
+}
+.term-img::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  background:
+    repeating-linear-gradient(to bottom,
+      rgba(0,0,0,0.22) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at center,
+      transparent 55%, rgba(13,13,15,0.55) 100%);
+  pointer-events: none;
+}
+.term-img .img-label {
+  margin-top: 6px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--subtle);
+}
+
+/* The dossier download link: a decree you're allowed to obey.
+   Inverted block like S010M0N's commands, but alive — it pulses
+   faintly and flips to white when hovered. */
+a.dl-here {
+  background: var(--active);
+  color: var(--bg);
+  font-weight: 700;
+  letter-spacing: 3px;
+  padding: 1px 8px;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  animation: dl-pulse 1.6s ease-in-out infinite;
+}
+a.dl-here:hover {
+  background: var(--stark);
+  animation: none;
+}
+@keyframes dl-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.0); }
+  50%      { box-shadow: 0 0 12px 2px rgba(230, 57, 70, 0.55); }
+}
+
+/* Dossier field labels */
+.dossier-key { color: var(--subtle); }
+
+/* S010M0N's command words: inverted block, heavy presence */
+.solomon-cmd {
+  background: var(--active);
+  color: var(--bg);
+  font-weight: 700;
+  letter-spacing: 3px;
+  padding: 1px 8px;
+  display: inline-block;
+}
+
+/* The terminal physically flinches when he speaks */
+@keyframes quake {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-3px, 2px); }
+  40% { transform: translate(3px, -2px); }
+  60% { transform: translate(-2px, -1px); }
+  80% { transform: translate(2px, 1px); }
+}
+#term.quake { animation: quake 0.35s linear; }
+
+/* The blinking reboot prompt */
+.reboot-prompt {
+  color: var(--stark);
+  font-weight: 700;
+  letter-spacing: 2px;
+  animation: blink 1s steps(1) infinite;
+  display: inline-block;
+}
+
+/* ============================================================
+   THE SHACKLE-SIGIL OF BASHEMOTH — rendered as inline SVG.
+   Line endpoints terminate in small circles, Goetia-style.
+   The .draw group "inks itself in" via the stroke-dashoffset
+   trick: dasharray = a length longer than any stroke, offset
+   starts equal (invisible), animates to 0 (fully drawn).
+   ============================================================ */
+.sigil {
+  width: min(170px, 45%);
+  display: block;
+  margin: 14px 0;
+}
+.sigil path, .sigil circle {
+  stroke: var(--active);
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: square;   /* hard pixel-adjacent ends — no
+                               smooth pen-stroke roundness     */
+  stroke-linejoin: miter;
+}
+.sigil .draw path, .sigil .draw circle {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: sigil-draw 2.4s ease forwards;
+}
+@keyframes sigil-draw { to { stroke-dashoffset: 0; } }
+
+/* The outer shackle ring is dashed — the binding itself */
+.sigil .shackle {
+  stroke-dasharray: 4 7;
+  stroke-width: 1.5;
+  opacity: 0.7;
+}
+
+/* During the cascade, the seal bleeds through corrupted */
+.sigil-glitch { animation: glitch-jitter 0.12s steps(2) infinite; }
+
+/* ============================================================
+   6. FOOTER
+   ============================================================ */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--footer-h);
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  z-index: 10;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+footer .spacer { margin-left: auto; }
+footer a {
+  color: var(--stark);
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  transition: background 0.2s, color 0.2s;
+}
+footer a:hover { background: var(--stark); color: var(--primary); }
+footer .sig { color: rgba(255, 255, 255, 0.55); text-transform: uppercase; }
+
+a:focus-visible, button:focus-visible { outline: 2px solid var(--stark); outline-offset: 2px; }
+
+/* ============================================================
+   6. MOBILE
+   ============================================================ */
+@media (max-width: 900px) {
+  body { overflow: auto; }
+  #term { display: none; }
+  #left-col { width: 100%; padding-left: 24px; height: auto; min-height: calc(100vh - var(--footer-h)); }
+  .btn-main { width: 86vw; left: -54px; }
+  .unskew { left: 86px; }
+  .help-text { left: 30px; }
+  #menu { gap: 20px; justify-content: flex-start; margin-top: 40px; }
+  .menu-item { height: 100px; }
+  footer { flex-wrap: wrap; height: auto; padding: 6px 10px; }
+  footer .sig { display: none; }
+}

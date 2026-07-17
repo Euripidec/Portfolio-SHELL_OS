@@ -1,494 +1,121 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Euripide Carpio | Portfolio</title>
-  <link href="./css/styles.css" type="text/css" rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@300..700&display=swap"
-    rel="stylesheet"
-  />
-  <script defer src="./js/script.js"></script>
-  <script defer src="./js/cursor.js"></script>
-  <script defer src="./js/starfield.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta charset="UTF-8">
-  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHELL//OS</title>
+<meta name="description" content="Portfolio of Euripide Carpio Fajardo — web developer, DaemonSoftworks.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <canvas id="sparkle-canvas"></canvas>
-  <!-- ===== NAVBAR ===== -->
-  <nav class="drop-in">
-    <ul>
-      <li>
-        <a href="#about-me"><img src="./images/Home.png" /><span>Home</span></a>
-      </li>
-      <li>
-        <a href="#projects"
-          ><img src="./images/Projects.png" /><span>Projects</span></a
-        >
-      </li>
-      <li>
-        <a href="#toolsntech"
-          ><img src="./images/Tools.png" /><span>Tools</span></a
-        >
-      </li>
-      <li>
-        <a href="#blog"><img src="./images/Thoughts.png" /><span>Blog</span></a>
-      </li>
-      <li>
-        <a href="#faq"><img src="./images/Faq.png" /><span>FAQ</span></a>
-      </li>
-      <li>
-        <a href="contact.html"
-          ><img src="./images/Contact.png" /><span>Contact</span></a
-        >
-      </li>
-    </ul>
-  </nav>
-  <!-- ===== PORTRAIT ===== -->
-  <div class="layout">
-    <div class="portrait drop-in">
-      <img src="./images/Portrait.jpg" />
-      <div class="bio-container">
-        <div class="bio">
-          <div class="bio-info">
-            <p class="name">Euripide Carpio</p>
-            <p>Full Stack Website Developer</p>
-            <p>Santo Domingo,Dominican Republic</p>
-          </div>
-          <div class="links-potrait">
-            <ul>
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/euripide-carpio-63a386152/"
-                  target="_blank"
-                  ><img src="./images/Linked In.svg"
-                /></a>
-              </li>
-              <li>
-                <a href="https://github.com/Euripidec" target="_blank"
-                  ><img src="./images/Github.svg"
-                /></a>
-              </li>
-              <li>
-                <a href="https://wa.me/8293876773" target="_blank"
-                  ><img src="./images/Whatsapp.svg"
-                /></a>
-              </li>
-              <li>
-                <a
-                  href="https://www.instagram.com/superboirose/"
-                  target="_blank"
-                  ><img src="./images/Instagram.svg"
-                /></a>
-              </li>
-            </ul>
-          </div>
+<body class="cascade">
+
+<div id="blackout"></div>
+
+<div id="wrapper">
+
+  <div id="left-col">
+
+    <header>
+      <div class="wordmark">Euripide<span>//</span>Carpio</div>
+      <div class="tagline">Portfolio — Daemon Softworks // Santo Domingo, DR</div>
+    </header>
+
+    <nav id="menu" aria-label="Main">
+
+      <div class="menu-item">
+        <a class="btn-main" href="#archon"
+           data-cmd="man archon"
+           data-page="pilot"
+           data-res="Archon dossier: Director of Payment Processing & Automation @ MCCD, coding since age 10, EN/ES bilingual">
+          <span class="unskew">Archon</span>
+        </a>
+        <span class="help-text">&gt; The one who binds</span>
+      </div>
+
+      <div class="menu-item">
+        <a class="btn-main" href="#projects"
+           data-page="projects"
+           data-cmd="man projects"
+           data-res="Deployed builds: 0rt1 tooling platform, Selenium deal bot, CI/CD auto-poster, dev cheat sheets">
+          <span class="unskew">Projects</span>
+        </a>
+        <span class="help-text">&gt; Deployed builds</span>
+      </div>
+
+      <div class="menu-item">
+        <a class="btn-main" href="#logs"
+           data-page="logs"
+           data-cmd="man logs"
+           data-res="Transmission archive: build logs, debugging war stories, and dispatches from the DR scene">
+          <span class="unskew">Logs</span>
+        </a>
+        <span class="help-text">&gt; Blog &amp; writeups</span>
+      </div>
+
+      <div class="menu-item">
+        <a class="btn-main" href="#comms"
+           data-page="comms"
+           data-cmd="man comms"
+           data-res="Open an uplink: GitHub, LinkedIn, email. Response time: fast. Status: UPLINK OPEN">
+          <span class="unskew">Comms</span>
+        </a>
+        <span class="help-text">&gt; Contact &amp; links</span>
+      </div>
+
+    </nav>
+  </div>
+
+  <div id="term" aria-hidden="true">
+    <div id="term-scroll">
+      <div class="term-row">
+
+        <!-- Left sidebar: scale + hatch/DSW end cap -->
+        <div class="ruler-col">
+          <div class="ruler"></div>
+          <svg class="cap cap-left" viewBox="0 0 17 16" shape-rendering="crispEdges" aria-hidden="true">
+        <path d="M4 0h1v1h-1zM5 0h1v1h-1zM8 0h1v1h-1zM3 1h1v1h-1zM4 1h1v1h-1zM7 1h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM6 2h1v1h-1zM1 3h1v1h-1zM2 3h1v1h-1zM5 3h1v1h-1zM1 4h1v1h-1zM2 4h1v1h-1zM4 4h1v1h-1zM1 5h1v1h-1zM2 5h1v1h-1zM3 5h1v1h-1zM4 5h1v1h-1zM5 5h1v1h-1zM6 5h1v1h-1zM7 5h1v1h-1zM8 5h1v1h-1zM9 5h1v1h-1zM10 5h1v1h-1zM11 5h1v1h-1zM12 5h1v1h-1zM13 5h1v1h-1zM14 5h1v1h-1zM1 6h1v1h-1zM2 6h1v1h-1zM3 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM7 6h1v1h-1zM8 6h1v1h-1zM9 6h1v1h-1zM10 6h1v1h-1zM11 6h1v1h-1zM12 6h1v1h-1zM13 6h1v1h-1zM14 6h1v1h-1zM15 6h1v1h-1zM1 9h1v1h-1zM2 9h1v1h-1zM5 9h1v1h-1zM6 9h1v1h-1zM9 9h1v1h-1zM13 9h1v1h-1zM1 10h1v1h-1zM3 10h1v1h-1zM5 10h1v1h-1zM9 10h1v1h-1zM13 10h1v1h-1zM1 11h1v1h-1zM3 11h1v1h-1zM6 11h1v1h-1zM9 11h1v1h-1zM11 11h1v1h-1zM13 11h1v1h-1zM1 12h1v1h-1zM3 12h1v1h-1zM7 12h1v1h-1zM9 12h1v1h-1zM11 12h1v1h-1zM13 12h1v1h-1zM1 13h1v1h-1zM2 13h1v1h-1zM5 13h1v1h-1zM6 13h1v1h-1zM10 13h1v1h-1zM12 13h1v1h-1z"/>
+          </svg>
         </div>
-        <a href="./downloadables/Euripide_Carpio_Resume.pdf" class="button" download="Euripide_Carpio_Resume" target="_blank">Get My Résumé!</a>
+
+        <div id="term-out"><span id="cursor"></span></div>
+
+        <!-- Right sidebar: scale + red pointer end cap -->
+        <div class="ruler-col">
+          <div class="ruler"></div>
+          <svg class="cap cap-right" viewBox="0 0 17 16" shape-rendering="crispEdges" aria-hidden="true">
+        <path d="M13 1h1v1h-1zM14 1h1v1h-1zM15 1h1v1h-1zM14 2h1v1h-1zM15 2h1v1h-1zM15 3h1v1h-1zM15 4h1v1h-1zM15 5h1v1h-1zM15 6h1v1h-1zM4 7h1v1h-1zM14 7h1v1h-1zM15 7h1v1h-1zM3 8h1v1h-1zM4 8h1v1h-1zM5 8h1v1h-1zM13 8h1v1h-1zM14 8h1v1h-1zM15 8h1v1h-1zM2 9h1v1h-1zM4 9h1v1h-1zM6 9h1v1h-1zM12 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM1 10h1v1h-1zM2 10h1v1h-1zM4 10h1v1h-1zM6 10h1v1h-1zM7 10h1v1h-1zM11 10h1v1h-1zM12 10h1v1h-1zM14 10h1v1h-1zM0 11h1v1h-1zM4 11h1v1h-1zM9 11h1v1h-1zM10 11h1v1h-1zM11 11h1v1h-1zM12 11h1v1h-1zM1 12h1v1h-1zM2 12h1v1h-1zM4 12h1v1h-1zM6 12h1v1h-1zM7 12h1v1h-1zM2 13h1v1h-1zM4 13h1v1h-1zM6 13h1v1h-1zM3 14h1v1h-1zM4 14h1v1h-1zM5 14h1v1h-1zM4 15h1v1h-1z"/>
+          </svg>
+        </div>
+
       </div>
     </div>
-
-    <main overflow-hidden>
-      <!-- ===== ABOUT ME ===== -->
-      <section class="about-me section">
-        <h1 id="about-me" class="drop-in">
-          <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Playfair+Display&weight=700&size=68&duration=1500&pause=700&color=FFFFFF&multiline=true&repeat=false&width=640&height=182&lines=Coding+the+Future;One+Line+at+a+Time" alt="Typing SVG" /></a>
-        </h1>
-        <p class="drop-in-2">
-          Embark on a transformative journey through captivating digital realms
-          with the enigmatic "Digital Alchemist," transcending code's
-          boundaries.
-        </p>
-        <div class="num-box drop-in-3">
-          <div class="box1">
-            <p class="number">+1</p>
-            <p>Learning Web Development</p>
-          </div>
-          <div class="box2">
-            <p class="number">+1</p>
-            <p>Building Full-stack Projects</p>
-          </div>
-          <div class="box3">
-            <p class="number">+12</p>
-            <p>Github Repositories</p>
-          </div>
-        </div>
-        <div class="links drop-in-4">
-          <a href="contact.html" class="button button1">Let's Talk !</a>
-          <div class="my-work">
-            <a href="#projects"><p>My Work</p></a>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24px"
-              viewBox="0 -960 960 960"
-              width="24px"
-              fill="#e3e3e3"
-            >
-              <path
-                d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"
-              />
-            </svg>
-          </div>
-        </div>
-      </section>
-      <!-- ===== PROJECTS ===== -->
-      <section class="projects section hidden">
-        <h1 id="projects">
-          Recent Projects <br />
-          & <span class="hero">Achievements</span>
-        </h1>
-        <div class="container">
-          <a href="https://euripidec.github.io/Tea-Cozy/" target="_blank">
-              <div class="card item-1 hidden">
-                <img src="./images/Tea Cozy.png" />
-                <div class="caption">
-                  <span class="title">
-                    <h3>Tea Cozy</h3>
-                  </span>
-                  <p>A responsive Landing page for a fictional tea shop</p>
-                </div>
-              </div>
-            </a>
-            <a href="https://euripidec.github.io/Arachne-HomePage/" target="_blank">
-              <div class="card item-2 hidden">
-                <img src="./images/Arachne.png" />
-                <div class="caption">
-                  <span class="title">
-                    <h3>Arachne Homepage</h3>
-                  </span>
-                  <p>A dark, atmospheric fan site inspired by the world of Marathon (Bungie)</p>
-                </div>
-              </div>
-            </a>
-            <a href="https://euripidec.github.io/Number-Guesser/" target="_blank">
-              <div class="card item-3 hidden">
-                <img src="./images/NumberGuesser.png" />
-                <div class="caption">
-                  <span class="title">
-                    <h3>Number Guesser</h3>
-                  </span>
-                  <p>A browser-based guessing game</p>
-                </div>
-              </div>
-            </a>
-            <a href="https://github.com/Euripidec/Credit-card-checker" target="_blank">
-              <div class="card item-4 hidden">
-                <img src="./images/credit card checker.webp" />
-                <div class="caption">
-                  <span class="title">
-                    <h3>CC Cheker</h3>
-                  </span>
-                  <p>A JavaScript program that validates credit card numbers</p>
-                </div>
-              </div>
-            </a>
-        </div>
-      </section>
-      <!-- ===== TOOLS ===== -->
-      <section class="toolsntech section hidden">
-        <h1 id="toolsntech">Tools & <span class="hero">Technologies</span></h1>
-        <div class="tool-grid">
-          <a href="https://react.dev/" target="_blank">
-             <div class="tool-card hidden">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-            />
-            <div>
-              <h3>React</h3>
-              <p>UI Library</p>
-            </div>
-          </div>
-          </a>
-          <a href="https://angular.dev/" target="_blank">
-             <div class="tool-card hidden">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-plain.svg"
-            />
-            <div>
-              <h3>Angular</h3>
-              <p>Web Framework</p>
-            </div>
-          </div>
-          </a>
-          <a href="https://nodejs.org/en" target="_blank">
-            <div class="tool-card hidden">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-            />
-            <div>
-              <h3>Node</h3>
-              <p>JavaScript Runtime</p>
-            </div>
-          </div>
-          </a>
-          <a href="https://git-scm.com/" target="_blank">
-            <div class="tool-card hidden">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-            />
-            <div>
-              <h3>Git</h3>
-              <p>Version Control</p>
-            </div>
-          </div>
-          </a>
-          <a href="https://github.com/" target="_blank">
-            <div class="tool-card hidden">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-            />
-            <div>
-              <h3>Github</h3>
-              <p>Code Hosting</p>
-            </div>
-          </div>
-          </a>
-          <a href="https://www.typescriptlang.org/" target="_blank">
-            <div class="tool-card hidden">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg"
-            />
-            <div>
-              <h3>TypeScript</h3>
-              <p>Structured JavaScript</p>
-            </div>
-          </div>
-        </div>
-          </a>
-      </section>
-      <!-- ===== QUOTES THAT INSPIRE ME  ===== -->
-      <section class="quotes section hidden">
-        <h1 class="header" id="quotes">
-          Quotes That <span class="hero">Inspire Me</span>
-        </h1>
-        <div class="slider">
-          <div class="slides">
-            <div class="quote-card">
-              <div>
-                <img src="./images/Haruko.png" />
-                <h6>Haruko Haruhara <span>- FLCL</span></h6>
-              </div>
-              <p>It takes an idiot to do cool things. That's why it's cool.</p>
-            </div>
-            <div class="quote-card">
-              <div>
-                <img src="./images/Naota.jpg" />
-                <h6>Naota Nandaba <span>- FLCL</span></h6>
-              </div>
-              <p>
-                Nothing amazing happens here. And you get used to that, used to
-                a world where everything is ordinary. Every day we spend here is
-                like a whole lifetime of dying slowly.
-              </p>
-            </div>
-            <div class="quote-card">
-              <div>
-                <img src="./images/Amarao.jpg" />
-                <h6>Commander Amarao <span>- FLCL</span></h6>
-              </div>
-              <p>When it comes down to it, there are very few people who will swing the bat.</p>
-            </div>
-            <div class="quote-card">
-              <div>
-                <img src="./images/Noriko.webp" />
-                <h6>Noriko Takaya <span>- Gunbuster</span></h6>
-              </div>
-              <p>No more crying, no more weakness, I'm going to protect them all!</p>
-            </div>
-            <div class="quote-card">
-              <div>
-                <img src="./images/Coach.jpg" />
-                <h6>Koichiro Oota <span>- Gunbuster</span></h6>
-              </div>
-              <p>Saving the Earth with hard work and guts! A miracle will happen — we'll make it happen!</p>
-            </div>
-            <div class="quote-card">
-              <div>
-                <img src="./images/Nono.png" />
-                <h6>Nono<span>- Diebuster</span></h6>
-              </div>
-              <p>A true buster machine pilot, has a buster machine in their heart!</p>
-            </div>
-          </div>
-          <div class="boton hidden">
-            <svg
-              class="next"
-              onclick="nextSlide()"
-              xmlns="http://www.w3.org/2000/svg"
-              height="24px"
-              viewBox="0 -960 960 960"
-              width="24px"
-              fill="#e3e3e3"
-            >
-              <path
-                d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"
-              />
-            </svg>
-            <svg
-              class="prev"
-              onclick="prevSlide()"
-              xmlns="http://www.w3.org/2000/svg"
-              height="24px"
-              viewBox="0 -960 960 960"
-              width="24px"
-              fill="#e3e3e3"
-            >
-              <path
-                d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"
-              />
-            </svg>
-          </div>
-        </div>
-      </section>
-      <!-- ===== BLOG ===== -->
-      <section class="blog section hidden">
-  <h1 class="header" id="blog">
-    Thoughts <br />
-    & <span class="hero">Ideas</span>
-  </h1>
-  <div class="container">
-    <!-- Cards are injected here by js/blogs.js -->
   </div>
 
-   <div class="all-blogs-box">
-          <div class="all-blogs"> 
-          <a href="./articles/all-blogs.html" id="allblogs-link">
-         All Blogs<span class="arrow">→</span>
-        </a>
-      </div>
-        </div>
-</section>
-      <!-- ===== FAQ ===== -->
-      <section class="faq section hidden">
-        <h1 class="header" id="faq">
-          Frequently <br />Asked<span class="hero"> Questions</span>
-        </h1>
-        <div class="accordion">
-          <div class="accordion-item">
-            <div class="accordion-header hidden">
-              <h5>How long have you actually been coding for?</h5>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                width="24px"
-                fill="#e3e3e3"
-              >
-                <path
-                  d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
-                />
-              </svg>
-            </div>
-            <div class="accordion-content">
-              Acutally I would say that I've been coding on and off ever since I
-              was 10 really. <br />
-              Even had my hands on a Raspberry Pi when they first came out.
-            </div>
-          </div>
-          <div class="accordion-item">
-            <div class="accordion-header hidden">
-              <h5>What made you want to code websites specifically?</h5>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                width="24px"
-                fill="#e3e3e3"
-              >
-                <path
-                  d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
-                />
-              </svg>
-            </div>
-            <div class="accordion-content">
-              Honeslty web-surfing comprised most of my childhood. <br />
-              I still remember to this day all the cool websites I visited
-              daily. <br />
-              Now however all the magic of early web 2.0 is gone. <br />
-              There's still the indie web so I mainly code websites just for
-              that lol
-            </div>
-          </div>
-          <div class="accordion-item">
-            <div class="accordion-header hidden">
-              <h5>What's your process in codeing websites?</h5>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                width="24px"
-                fill="#e3e3e3"
-              >
-                <path
-                  d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
-                />
-              </svg>
-            </div>
-            <div class="accordion-content">
-              Just put on some ambient jungle and vibe really lol. If I dont
-              have a design sheet <br />or anything else to guide my process, I
-              really just code what looks cool. <br />
-              I also use minimal AI especially with my code directly, I only
-              ever use it for <br />troubleshooting and even then, thats after I
-              exhausted stackoverflow
-            </div>
-          </div>
-          <div class="accordion-item">
-            <div class="accordion-header hidden">
-              <h5>What's your favorite anime?</h5>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                width="24px"
-                fill="#e3e3e3"
-              >
-                <path
-                  d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
-                />
-              </svg>
-            </div>
+</div>
 
-            <div class="accordion-content">
-              I mean if it isn't obvious from the quotes, It's Fooly Cooly.
-              <br />
-              But my favorite anime genre is mecha Gainax (R.I.P) being my
-              favorite anime studio
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- ===== CONTACT ===== -->
-      <section class="Contact hidden">
-        <a href="contact.html"
-          ><div class="contact-card hidden">
-            <div>
-              <h2>Let's <br /><span class="hero">collaborate</span></h2>
-              <div class="arrow-wrap">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24px"
-                  viewBox="0 -960 960 960"
-                  width="24px"
-                  fill="#e3e3e3"
-                >
-                  <path
-                    d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"
-                  />
-                </svg>
-              </div>
-            </div>
-            <p>
-              Unlock the power of cutting-edge design and development, where
-              every pixel and line of code is crafted with purpose. Let's build
-              seamless, user-centered experiences that don't just meet your
-              vision — they exceed it!
-            </p>
-          </div></a
-        >
-      </section>
-    </main>
-  </div>
-  <footer>Designed and Developed by Euripide Carpio Fajardo</footer>
-  
+<footer>
+  <span class="sig">SHELL//OS v2.0 // S010M0N WATCHES</span>
+  <span class="spacer"></span>
+  <a href="https://github.com/Euripidec" target="_blank" rel="noopener">GitHub</a>
+  <a href="https://euripidecarpio.neocities.org" target="_blank" rel="noopener">Neocities</a>
+  <a href="mailto:you@example.com">Email</a>
+  <a href="#" id="audio-toggle">Audio: On</a>
+</footer>
+
+<!-- GoatCounter visit counting (free: goatcounter.com).
+     Fill in your code and uncomment — this script COUNTS each visit;
+     js/lore.js READS the total and has SHELL print it in the boot log.
+<script data-goatcounter="https://YOURCODE.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+-->
+
+<script src="js/engine.js"></script>
+<script src="js/lore.js"></script>
+
 </body>
+</html>

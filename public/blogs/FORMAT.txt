@@ -1,0 +1,17 @@
+TRANSMISSION FORMAT — how the terminal reads these files
+=========================================================
+Plain text. Three rules:
+
+  blank line       = paragraph break
+  # Section Title  = white section header (rendered UPPERCASE)
+  > pulled line    = red-accented quote/emphasis line
+
+Everything else prints as normal body text, line by line.
+Paste each post's text into its .txt file (web-eras.txt, etc.)
+and delete the placeholder marker line. The title is NOT needed
+in the file — the terminal prints it from the BLOGS array.
+
+NOTE: reading uses fetch(), which browsers block on file://
+pages. To test locally, serve the folder first:
+  python -m http.server
+then open http://localhost:8000

@@ -1,0 +1,49 @@
+Apr 13, 2025 · 6 min read · Indie Web
+
+# The Web Was More Fun When We Built It Ourselves
+
+Before the algorithm, before the platform, before the engagement metric — there was just a person, a text editor, and something they wanted to say. The indie web isn't a new idea. It's actually the original one. And quietly, in the background of everything that social media became, it never really went away.
+
+# What Even Is the Indie Web?
+
+The indie web — sometimes written as IndieWeb — is a loose movement built around one core belief: your content should live on a space you own and control, not on a platform that can change its rules, shut down, or sell your data at any moment.
+
+In practical terms that means personal websites. Blogs. Hand-coded pages. Sites built for expression rather than engagement. It's the part of the internet that still looks like someone made it — because someone did, for no reason other than they wanted to.
+
+It's not a company, not a product, and not a protocol you need to install. It's more of a philosophy — one that says the web works better when individuals have a stake in it rather than when a handful of corporations own all the space.
+
+# Where Did It Go?
+
+The personal web didn't die — it got outcompeted. When Facebook, Twitter, and Tumblr made publishing effortless, the barrier to entry for having an online presence dropped to zero. You didn't need to know HTML. You didn't need hosting. You just needed an email address.
+
+That was genuinely good for a while. More people could participate. More voices could be heard. But the tradeoff was that everyone moved onto the same handful of platforms, and those platforms had every incentive to keep you there as long as possible — not to serve you, but to sell your attention.
+
+> "Your profile isn't your home. It's a rented room in someone else's building, and they can redecorate, raise the rent, or knock the whole thing down whenever they feel like it."
+
+Entire creative communities built on Vine, Tumblr, or Twitter watched years of work get restructured, demonetized, or simply deleted when a platform changed direction. The indie web crowd saw this coming — because they'd seen it happen before, and they'd already decided not to play that game.
+
+# Why It Still Matters
+
+There's something about a personal website that no social media profile can replicate. It's yours in a way that nothing on a platform ever is. The layout, the color scheme, the way the pages link together — all of it communicates something about who you are before you've written a single word. It has texture. History. Personality.
+
+The indie web also resists the homogenization that platforms enforce. Every Twitter profile looks like every other Twitter profile. Every LinkedIn page is the same beige rectangle. But a personal site can be anything. Brutalist. Minimal. Loud. Strange. That diversity is what made the early web worth exploring — and what's mostly missing from the internet today.
+
+From a practical standpoint, a personal site is also just better for your career. It's searchable, linkable, fully in your control, and it shows — not just tells — that you can actually build things on the web.
+
+# How to Be Part of It
+
+You don't need to join anything or sign up anywhere. You just need to own a domain and put something on it. That's the whole barrier to entry. And if you don't have hosting yet, Neocities is one of the best places to start. It's free, it lets you upload raw HTML and CSS, and it's built entirely around the idea of personal websites — no templates, no algorithms, no feed. Just pages that people made. It's also one of the closest things the modern web has to the old GeoCities energy, which is exactly the point.
+
+Beyond that, there are a few principles the IndieWeb community has formalized that are worth knowing. POSSE — Publish on your Own Site, Syndicate Elsewhere — means you post on your own site first and then share links to platforms, rather than posting natively there. That way the canonical version of your work always lives somewhere you control.
+
+Webmentions are another tool — a protocol that lets sites notify each other when one links to another, creating a kind of decentralized comment system across the open web. It's not glamorous, but it's a glimpse of what web interaction looks like when it's not owned by a single company.
+
+Even if you ignore all of that and just write on your own site occasionally — that counts. You're already doing it. The indie web is less about following a methodology and more about the decision to show up somewhere that's actually yours.
+
+# Why I Build for It
+
+Honestly, this is a big part of why I got into web development in the first place. I grew up surfing the early web — the personal pages, the fan sites, the random forums about niche interests that had no business existing but somehow did anyway. That version of the internet felt alive in a way that a Twitter feed never has.
+
+Building your own site — even a small one, even an imperfect one — is an act of resistance against an internet that wants you to be a passive consumer of content someone else made to keep you scrolling. It's also just more interesting. You learn more, you express more, and you end up with something that's actually yours.
+
+The web was more fun when we built it ourselves. It can be again.
