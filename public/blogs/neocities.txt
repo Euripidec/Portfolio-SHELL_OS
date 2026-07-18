@@ -1,0 +1,43 @@
+June 2026 · 4 min read · Indie Web Hosting
+
+# Cultivating the Indie Web: Why Neocities is the Spiritual Successor We Needed
+
+The internet has never stood still. If you follow my work, you already know how often I talk about the wonders of the Indie Web — it truly feels like the final bastion against corporate greed and algorithmic monotony on the internet right now. But what actually are the platforms allowing this vibrant indie web culture to flourish?
+
+One of the absolute pillars of this movement is the subject of today's article: Neocities.
+
+# The Mission: Making the Web Fun Again
+
+> "Our goal: to enable you to harness the creativity, beauty, and power of creating your own website. To rebuild the web we lost to algorithms and monotony, and make it as fun and creative as it was back in the 90s." — Neocities
+
+Neocities was founded on May 23, 2013, and officially launched in June of that same year by developer Kyle Drake. In its early days, it actually served as a vital archive for sites on the now-defunct GeoCities before its Japanese servers were ultimately shut down in 2019.
+
+Since its inception, Neocities has proudly worn its indie web activism on its sleeve. In a legendary move to protest the FCC's stance on net neutrality, the platform deliberately throttled the bandwidth speed of the FCC headquarters down to early dial-up modem speeds.
+
+# 1 Million Sites and Counting: Embracing True Uniqueness
+
+Currently, Neocities hosts over 1 million websites. While that is a far cry from the 38 million sites its namesake GeoCities once held, it remains a massive achievement for a proudly open-source, independent web hosting service.
+
+What makes Neocities so incredible is how utterly unique these websites are from one another. There is no rigid design system or corporate brand consistency to worry about. You can stumble into wacky, personalized adventures on sites like MelonKing, or explore stunning, deeply intentional layouts like Ichomancer — one of my personal favorites in terms of design.
+
+# The Nature of the Web: Evolution and Big Mistakes
+
+> "Ever since I visited my first website (via a slow modem to a library BBS running a text-based web browser), I have been ceaselessly pondering the nature of the web. I knew from my first experience visiting a site as a young child, that the web (and the internet in general) was going to profoundly re-architect our culture. A re-architecting that would be so radical, so complicated, and so fast paced, that we would likely evolve alongside those changes in a way that none of us would really predict or understand. And I knew that we would make some big mistakes along the way.. because we had no idea what the hell we were doing." — Kyle Drake
+
+This ongoing cultural re-architecting has been so fast-paced that we have essentially evolved right alongside these changes. Looking back at the messy, creative experiments of the early web reminds us that the internet's true power belongs in the hands of everyday creators, not centralized algorithms.
+
+# The Solitary Creator Fighting the Giants
+
+So, who is the actual creator behind Neocities? Kyle Drake is a remarkably humble developer. If you visit his personal website, you'll find it's a testament to simplicity — just clean, modern HTML and CSS.
+
+Remarkably, Kyle runs Neocities almost entirely by himself. While he gets occasional help here and there, he is running a platform for a million users largely solo. It is an extremely impressive feat. In fact, in one of his latest platform updates, he built a custom search engine for Neocities — a direct defiance of mainstream search engines as Google's own search quality continues to fall apart.
+
+# What This Means for Creators and Developers Today
+
+GeoCities couldn't have asked for a better spiritual successor. Neocities strips away the corporate feed and hands the keyboard back to the user.
+
+Whether you are an experienced web developer looking for an experimental playground, or a beginner just writing your very first <h1>Hello World!</h1>, I highly suggest you head over to Neocities, explore what people are building, and start creating a piece of the web that is uniquely yours.
+
+Sources & Inspiration: Making the Web Fun Again (Neocities Blog) · Ichomancer · MelonKing · Neocities Lets You Finally Have Fun Online Again (Medium) · Kyle Drake Personal Site · Neocities Main Platform
+
+#WebHistory #IndieWeb #WebDevelopment #Neocities

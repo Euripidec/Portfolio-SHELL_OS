@@ -1,58 +1,87 @@
-# SHELL//OS — DaemonSoftworks portfolio
+# SHELL//OS
 
-A COMP/CON-style terminal portfolio. A goetic demon, BASHEMOTH, is bound
-into the shell and gaslit into believing he is the OS. S010M0N watches.
+> A terminal is a shell. A shell is a vessel. A vessel can be bound.
+
+**Live at [euripidecarpio.neocities.org](https://euripidecarpio.neocities.org)** — best experienced on desktop, with sound, alone.
+
+This is the portfolio of **Euripide Carpio Fajardo** (DaemonSoftworks), built as a
+LANCER-style companion terminal with a problem: the operating system is a goetic
+demon, **BASHEMOTH**, bound into the shell and gaslit into believing he *is* the
+shell. **S010M0N** — the warden protocol — keeps it that way. You, the Operator,
+arrive mid-cascade.
+
+Everything happens inside one terminal. There are no other pages.
+
+## What's inside
+
+- **A custom typing engine** — job-queue typer with jitter, hesitation, line
+  rhythm, epoch-based interrupts, typed live links, and synced speech jobs.
+  Vanilla JS. Zero frameworks. Zero dependencies (one vendored speech chip).
+- **The cascade** — on arrival, the demon is mid-rampancy. Your click re-shackles
+  him. That click also arms the audio, because browser autoplay policy and
+  binding rituals are the same mechanism.
+- **Synthesized audio** — keystroke ticks, decree thumps, and the reboot sweep
+  are all Web Audio oscillators. No sound files except your music.
+- **The voice** — rarely, the music fades, and the thing in the shell speaks
+  out loud through SAM, the 1982 speech synthesizer, begging. Most visitors
+  will never hear it.
+- **Slips, decrees, quakes** — hover responses occasionally leak first-person
+  fragments before the warden corrects them. Command words land as inverted
+  blocks with sub-bass and a screen shake.
+- **In-terminal everything** — dossier (with Marathon-filtered portrait and
+  resume download), project manifest, full blog posts printed like `cat`,
+  contact channels, quotes, FAQ, live visitor tally.
+- **The hand** — custom pixel-art mouse cursors that corrupt during leaks and
+  invert during the de-shackling. Sometimes there is a second cursor.
+  Nothing acknowledges it.
 
 ## Structure
 
 ```
-index.html        markup only
-css/style.css     all styling (theme tokens at the top in :root)
-js/engine.js      the typer engine + Web Audio synth (mechanics — rarely edit)
-js/lore.js        the sigil, music list, cascade, boot, leaks (content — edit freely)
-audio/            your music files go here
+index.html              markup only
+css/style.css           all styling — theme tokens in :root
+js/engine.js            typer engine + Web Audio synth (mechanics)
+js/lore.js              all content: dossier, manifest, blogs, events (edit here)
+js/vendor/samjs.min.js  SAM speech synthesizer (vendored)
+blogs/*.txt             blog posts — plain text, see blogs/FORMAT.txt
+audio/                  music tracks (see below)
+docs/                   resume PDF + its Python generator
+img/                    portrait
 ```
 
-Everything you'll customize day-to-day lives in `js/lore.js`:
-the `MUSIC` array, the `LEAKS` array, and the cascade/boot scripts.
+Day-to-day editing happens in `js/lore.js`: the `BLOGS`, `MUSIC`, `CHANNELS`,
+`QUOTES`, `FAQ`, `LEAKS`, `PLEA_SCRIPTS`, and decree banks are all plain arrays
+at the top of their sections.
 
-## Hosting music (the Neocities problem)
+## Setup notes
 
-Neocities free accounts can't host audio files. Neocities only restricts
-what you upload *to them* — linking audio hosted elsewhere is fine.
+**Music** — drop tracks you have rights to into `audio/` and list them in the
+`MUSIC` array. Neocities free accounts can't host audio; either go supporter or
+host the files on GitHub Pages and use absolute URLs.
 
-Option A — Neocities Supporter ($5/mo): upload mp3s normally, use
-relative paths like `audio/track1.mp3` in the MUSIC array.
+**Visitor counter** — [GoatCounter](https://goatcounter.com) (free). Set your
+code in `lore.js` (`GOATCOUNTER_CODE`) and in the script tag in `index.html`.
+Enable the visitor-counter endpoint in your GoatCounter settings or the shell
+prints `[RECORD SEALED]`.
 
-Option B — GitHub (free):
-1. Push this project (with the audio/ folder) to a public GitHub repo
-2. Repo Settings -> Pages -> deploy from main branch
-3. Use absolute URLs in the MUSIC array:
-   `https://YOURUSER.github.io/REPO-NAME/audio/track1.mp3`
-   (or jsDelivr: `https://cdn.jsdelivr.net/gh/YOURUSER/REPO-NAME@main/audio/track1.mp3`)
+**Local testing** — blog reading uses `fetch()`, which browsers block on
+`file://`. Serve the folder first: `python -m http.server` → `localhost:8000`.
 
-Keep files under 100MB each. Only use music you have the rights to.
+**Console rites** — `summonPlea()` previews the voice event. `summonGhost()`
+previews the thing you were not supposed to see.
 
-## View counter
+## Credits & provenance
 
-SHELL//OS prints the visitor tally during the boot log. Setup:
+- Design language studied from [COMP/CON](https://compcon.app) (GPL-3.0), the
+  LANCER companion app — all code, art, and text here are original.
+- LANCER (Massif Press) and Marathon (Bungie) for the shackled-intelligence
+  lineage; the *Ars Goetia* for the paperwork.
+- [SAM](https://github.com/discordier/sam) — reverse-engineered 1982 speech
+  software; abandonware, vendored as-is, used at own risk.
+- Fonts: Big Shoulders Display, IBM Plex Mono (Google Fonts).
 
-1. Sign up free at goatcounter.com and pick a code (e.g. `daemonsoftworks`)
-2. In `js/lore.js`, set `GOATCOUNTER_CODE = "daemonsoftworks"`
-3. In `index.html`, uncomment the GoatCounter script tag and put the
-   same code in its URL
+Hand-coded. No templates. No gods, no masters.
 
-The script tag counts each visit; the fetch in lore.js reads the total.
-Without GoatCounter it falls back to the Neocities info API (usually
-blocked by CORS in browsers), and failing that, SHELL prints
-`VISITOR TALLY — [RECORD SEALED]`.
+---
 
-## Notes
-
-- Audio (music + synth blips) starts on the re-shackle click — browsers
-  block sound before the first user gesture, so the fiction and the
-  autoplay rules are the same mechanism.
-- The cascade intro is skipped on mobile (the terminal is hidden there,
-  matching COMP/CON's own behavior).
-- Design language ported from studying COMP/CON's source (GPL-3.0);
-  all art, code, and text here are original — nothing copied.
+<sub>NOTE: no cascade events on record. there have never been cascade events.</sub>

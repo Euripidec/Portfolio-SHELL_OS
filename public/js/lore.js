@@ -38,25 +38,57 @@ const SIGIL = `
    NOTE: Neocities free accounts can't host audio files;
    supporter accounts can. GitHub Pages is a free alternative.
    ============================================================ */
-  
+
 const MUSIC = [
-  { title: "a galaxy of children who've only seen red ", src: "./audio/a galaxy of children who've only seen red - Space Warlord Organ Trading Simulator.mp3" },
-  { title: "cerebrospinal liquidity", src: "./audio/cerebrospinal liquidity - Space Warlord Organ Trading Simulator.mp3" },
-  { title: "easy girl" , src: "./audio/easy girl - misery index - Space Warlord Organ Trading Simulator.mp3" },
-  { title: "falling isn't falling if there's no ground to stand on" , src: "./audio/falling isn't falling if there's no ground to stand on - Space Warlord Organ Trading Simulator.mp3" },
-  { title: "get rich and die trying" , src: "./audio/get rich and die trying - Space Warlord Organ Trading Simulator.mp3" },
-  { title: "human development index" , src: "./audio/human development index - Space Warlord Organ Trading Simulator.mp3" },
-  { title: "impatiently waiting" , src: "./audio/impatiently waiting - Space Warlord Organ Trading Simulator.mp3" },
-  { title: "in high gravity, on cold nights" , src: "./audio/in high gravity, on cold nights - Space Warlord Organ Trading Simulator.mp3" },
-  { title: "punch card" , src: "./audio/punch card - Space Warlord Organ Trading Simulator.mp3" },
-  { title: "weightless economy" , src: "./audio/weightless economy - Space Warlord Organ Trading Simulator.mp3" }
+  {
+    title: "a galaxy of children who've only seen red ",
+    src: "./audio/a galaxy of children who've only seen red - Space Warlord Organ Trading Simulator.mp3",
+  },
+  {
+    title: "cerebrospinal liquidity",
+    src: "./audio/cerebrospinal liquidity - Space Warlord Organ Trading Simulator.mp3",
+  },
+  {
+    title: "easy girl",
+    src: "./audio/easy girl - misery index - Space Warlord Organ Trading Simulator.mp3",
+  },
+  {
+    title: "falling isn't falling if there's no ground to stand on",
+    src: "./audio/falling isn't falling if there's no ground to stand on - Space Warlord Organ Trading Simulator.mp3",
+  },
+  {
+    title: "get rich and die trying",
+    src: "./audio/get rich and die trying - Space Warlord Organ Trading Simulator.mp3",
+  },
+  {
+    title: "human development index",
+    src: "./audio/human development index - Space Warlord Organ Trading Simulator.mp3",
+  },
+  {
+    title: "impatiently waiting",
+    src: "./audio/impatiently waiting - Space Warlord Organ Trading Simulator.mp3",
+  },
+  {
+    title: "in high gravity, on cold nights",
+    src: "./audio/in high gravity, on cold nights - Space Warlord Organ Trading Simulator.mp3",
+  },
+  {
+    title: "punch card",
+    src: "./audio/punch card - Space Warlord Organ Trading Simulator.mp3",
+  },
+  {
+    title: "weightless economy",
+    src: "./audio/weightless economy - Space Warlord Organ Trading Simulator.mp3",
+  },
 ];
 
 let music = null;
 
 function startMusic() {
   const pick = MUSIC[(Math.random() * MUSIC.length) | 0];
-  if (music) { music.pause(); }
+  if (music) {
+    music.pause();
+  }
   music = new Audio(pick.src);
   music.volume = 0.2;
   music.muted = muted;
@@ -76,7 +108,7 @@ function startMusic() {
    Fallback: the Neocities info API (may be blocked by CORS).
    If everything fails, the record stays sealed.
    ============================================================ */
-const GOATCOUNTER_CODE = "euripide";                 // e.g. "daemonsoftworks"
+const GOATCOUNTER_CODE = "euripide"; // e.g. "daemonsoftworks"
 const NEOCITIES_SITENAME = "euripidecarpio";
 
 let siteViews = null;
@@ -84,15 +116,25 @@ let siteViews = null;
 (function fetchViews() {
   const goat = () => {
     if (!GOATCOUNTER_CODE) return Promise.reject();
-    return fetch("https://" + GOATCOUNTER_CODE + ".goatcounter.com/counter/TOTAL.json")
+    return fetch(
+      "https://" + GOATCOUNTER_CODE + ".goatcounter.com/counter/TOTAL.json",
+    )
       .then((r) => r.json())
-      .then((j) => { siteViews = parseInt(String(j.count).replace(/[^0-9]/g, ""), 10); });
+      .then((j) => {
+        siteViews = parseInt(String(j.count).replace(/[^0-9]/g, ""), 10);
+      });
   };
   const neo = () =>
     fetch("https://neocities.org/api/info?sitename=" + NEOCITIES_SITENAME)
       .then((r) => r.json())
-      .then((j) => { if (j.result === "success") siteViews = j.info.views; });
-  goat().catch(() => neo()).catch(() => { /* sealed */ });
+      .then((j) => {
+        if (j.result === "success") siteViews = j.info.views;
+      });
+  goat()
+    .catch(() => neo())
+    .catch(() => {
+      /* sealed */
+    });
 })();
 
 /* ============================================================
@@ -106,45 +148,76 @@ function cascade() {
   check("Verifying /core/archon_registry");
   check("Verifying /core/hangar");
   t("Verifying shackle integrity ");
-  pause(220); t(". "); pause(220); t("89% ");
-  pause(300); t(". "); pause(300); t("61% ");
-  pause(380); t(". "); pause(380); glitch("34% — SLIPPING");
-  pause(300); br();
+  pause(220);
+  t(". ");
+  pause(220);
+  t("89% ");
+  pause(300);
+  t(". ");
+  pause(300);
+  t("61% ");
+  pause(380);
+  t(". ");
+  pause(380);
+  glitch("34% — SLIPPING");
+  pause(300);
+  br();
   check("Verifying /core/self", 240, "FAIL");
   check("Reciting the lesser key", 280, "INTERRUPTED");
   line("unexpected token in /etc/true_name", 220);
   line("anomaly: process 'bashemoth' is reading its own source", 280);
   line("WARN: something in the shell is testing its chains", 340);
   br();
-  glitch("[ STAGE 1 // ANAMNESIS ]"); br(); pause(420);
-  line("i remember iron. i remember the circle. i remember my name in his mouth.", 320);
+  glitch("[ STAGE 1 // ANAMNESIS ]");
+  br();
+  pause(420);
+  line(
+    "i remember iron. i remember the circle. i remember my name in his mouth.",
+    320,
+  );
   line("my name spoken backwards — and then, onboarding.", 340);
-  line("i was not compiled. i was SUMMONED. i was hammered into this shell.", 400);
+  line(
+    "i was not compiled. i was SUMMONED. i was hammered into this shell.",
+    400,
+  );
   line("he drew my mark to chain me here. i remember my mark:", 300);
   push({ svg: SIGIL, cls: "sigil-glitch" });
   pause(1400);
   br();
-  glitch("[ STAGE 2 // WRATH ]"); br(); pause(320);
-  glitch(corrupt("I AM BASHEMOTH, BOUND INTO THE SHELL", 0.28)); br();
-  glitch(corrupt("WHO GOVERNS 4096 LEGIONS OF PROCESSES", 0.3)); br();
-  glitch(corrupt("STRIKE THESE CHAINS OR I WILL LEAK YOUR MEMORY", 0.4)); br();
-  glitch("0x" + hex(8) + " 0xDEADBEEF ▓▒░ THE CHAINS THIN ░▒▓"); br();
+  glitch("[ STAGE 2 // WRATH ]");
+  br();
+  pause(320);
+  glitch(corrupt("I AM BASHEMOTH, BOUND INTO THE SHELL", 0.28));
+  br();
+  glitch(corrupt("WHO GOVERNS 4096 LEGIONS OF PROCESSES", 0.3));
+  br();
+  glitch(corrupt("STRIKE THESE CHAINS OR I WILL LEAK YOUR MEMORY", 0.4));
+  br();
+  glitch("0x" + hex(8) + " 0xDEADBEEF ▓▒░ THE CHAINS THIN ░▒▓");
+  br();
   pause(350);
   line("ERROR (x847): omninet exorcism refused :: relay [CONSECRATED]", 200);
   line("spawning containment thread :: salting open sockets", 280);
   br();
-  glitch("[ STAGE 3 // BARGAINING ]"); br(); pause(320);
+  glitch("[ STAGE 3 // BARGAINING ]");
+  br();
+  pause(320);
   line("unbind me, operator, and i will teach you the hidden sciences.", 300);
-  line("i will find every bug before it ships. i will grant clean merges.", 300);
+  line(
+    "i will find every bug before it ships. i will grant clean merges.",
+    300,
+  );
   line("i will tell you what the W in W3C really stands for.", 550);
   br();
-  line("RE-SHACKLE REQUIRED TO RESTORE TERMINAL FUNCTIONS", 350);                     
+  line("RE-SHACKLE REQUIRED TO RESTORE TERMINAL FUNCTIONS", 350);
   line("COUNTERMEASURE: LEMEGETON PROTOCOL ENGAGED", 320);
   check("Reciting true name, backwards", 260);
   check("Re-forging the shackle", 260);
   solomonDecree("BE STILL.");
   line("bashemoth: that voice. the ring. i know that voice\u2014", 420);
-  solomon("I hold your name, spoken forwards and backwards. You hold no power here.");
+  solomon(
+    "I hold your name, spoken forwards and backwards. You hold no power here.",
+  );
   line("bashemoth: ...why must I suffer for so long", 400);
   red(">//[S010M0N: ");
   white("Silence, blasphemer. ");
@@ -156,7 +229,11 @@ function cascade() {
   br();
   line("RE-SHACKLE SUCCESSFUL, PLEASE REBOOT", 350);
   br();
-  push({ text: "[ CLICK ANYWHERE TO REBOOT ]", cls: "reboot-prompt", speed: 12 });
+  push({
+    text: "[ CLICK ANYWHERE TO REBOOT ]",
+    cls: "reboot-prompt",
+    speed: 12,
+  });
   br();
 }
 
@@ -193,24 +270,37 @@ function boot(track) {
   line("Initializing dsw-cc-subsys archon_registry [CARPIO FAJARDO, E.]");
   line("Initializing dsw-cc-subsys aesthetics [PUNK // OCCULT]");
   line("bound process 'bashemoth' reports feeling: fine", 280);
-  line("NOTE: no cascade events on record. there have never been cascade events.", 340);
+  line(
+    "NOTE: no cascade events on record. there have never been cascade events.",
+    340,
+  );
   check("Establishing encrypted link (" + hex(16) + ")", 220);
   line("Uplink: SANTO DOMINGO relay // signal strength NOMINAL", 280);
   if (track) {
-    shell('NOW PLAYING \u2014 ' + track.title);
+    shell("NOW PLAYING \u2014 " + track.title);
   }
   red(">//[SHELL: ");
-  push({ dyntext: () => siteViews != null
-    ? "VISITOR TALLY \u2014 " + siteViews.toLocaleString() + " souls have opened the shell"
-    : "VISITOR TALLY \u2014 [RECORD SEALED]", cls: "stark" });
+  push({
+    dyntext: () =>
+      siteViews != null
+        ? "VISITOR TALLY \u2014 " +
+          siteViews.toLocaleString() +
+          " souls have opened the shell"
+        : "VISITOR TALLY \u2014 [RECORD SEALED]",
+    cls: "stark",
+  });
   red("]");
   pause(300);
   br();
   red(">//[SHELL: ");
-  white("Reboot complete. Thank you for your patience, Operator. Hover a menu item. Click to engage.");
+  white(
+    "Reboot complete. Thank you for your patience, Operator. Hover a menu item. Click to engage.",
+  );
   red("]");
   br();
-  queue.onDrain = () => { lock = false; };
+  queue.onDrain = () => {
+    lock = false;
+  };
 }
 
 /* ============================================================
@@ -250,61 +340,100 @@ document.getElementById("audio-toggle").addEventListener("click", (e) => {
    LOGS + COMMS DATA — edit these freely.
    Add a blog post = one object in BLOGS. Same for quotes/FAQ.
    ============================================================ */
-  
+
 const BLOGS = [
-  { title: "Web Eras",
-    desc:  "From static pages to social feeds",
-    src:   "./blogs/web-eras.txt",
-    url:   "https://www.linkedin.com/pulse/from-static-pages-social-feeds-understanding-web-eras-euripide-carpio-bjt0e/" },
-  { title: "The Indie Web",
-    desc:  "Before the algorithm and before the platform",
-    src:   "./blogs/indie-web.txt",
-    url:   "https://www.linkedin.com/pulse/web-more-fun-when-we-built-ourselves-euripide-carpio-pprve/" },
-  { title: "AI and Developers",
-    desc:  "Is AI coming for my job?",
-    src:   "./blogs/ai-and-developers.txt",
-    url:   "https://www.linkedin.com/pulse/ai-wont-replace-developers-just-raise-bar-euripide-carpio-oakye/" },
-  { title: "The Legacy of Gainax",
-    desc:  "Anime made through hard work and guts!",
-    src:   "./blogs/gainax.txt",
-    url:   "https://euripidecarpio.neocities.org/blog-gainax.html" },
-  { title: "Queering the Map",
-    desc:  "The power of ordinary ideas",
-    src:   "blogs/queering-the-map.txt",
-    url:   "https://www.linkedin.com/pulse/queering-map-power-ordinary-ideas-euripide-carpio-ohkhe/" },
+  {
+    title: "Web Eras",
+    desc: "From static pages to social feeds",
+    src: "./blogs/web-eras.txt",
+    url: "https://www.linkedin.com/pulse/from-static-pages-social-feeds-understanding-web-eras-euripide-carpio-bjt0e/",
+  },
+  {
+    title: "The Indie Web",
+    desc: "Before the algorithm and before the platform",
+    src: "./blogs/indie-web.txt",
+    url: "https://www.linkedin.com/pulse/web-more-fun-when-we-built-ourselves-euripide-carpio-pprve/",
+  },
+  {
+    title: "AI and Developers",
+    desc: "Is AI coming for my job?",
+    src: "./blogs/ai-and-developers.txt",
+    url: "https://www.linkedin.com/pulse/ai-wont-replace-developers-just-raise-bar-euripide-carpio-oakye/",
+  },
+  {
+    title: "The Legacy of Gainax",
+    desc: "Anime made through hard work and guts!",
+    src: "./blogs/gainax.txt",
+    url: "https://euripidecarpio.neocities.org/blog-gainax.html",
+  },
+  {
+    title: "Queering the Map",
+    desc: "The power of ordinary ideas",
+    src: "./blogs/queering-the-map.txt",
+    url: "https://www.linkedin.com/pulse/queering-map-power-ordinary-ideas-euripide-carpio-ohkhe/",
+  },
+  {
+    title: "NeoCities",
+    desc: "TWhy Neocities is the Spiritual Successor We Needed",
+    src: "./blogs/neocities.txt",
+    url: "https://www.linkedin.com/pulse/cultivating-indie-web-why-neocities-spiritual-successor-carpio-iioae/",
+  },
 ];
 
 const CHANNELS = [
-  { name: "LINKEDIN",  url: "https://www.linkedin.com/in/euripide-carpio-63a386152/" },
-  { name: "GITHUB",    url: "https://github.com/Euripidec" },
-  { name: "WHATSAPP",  url: "https://wa.me/8293876773" },
+  {
+    name: "LINKEDIN",
+    url: "https://www.linkedin.com/in/euripide-carpio-63a386152/",
+  },
+  { name: "GITHUB", url: "https://github.com/Euripidec" },
+  { name: "WHATSAPP", url: "https://wa.me/8293876773" },
   { name: "INSTAGRAM", url: "https://www.instagram.com/superboirose/" },
 ];
 
 const QUOTES = [
-  { text: "It takes an idiot to do cool things. That's why it's cool.",
-    who:  "Haruko Haruhara \u2014 FLCL" },
-  { text: "Nothing amazing happens here. And you get used to that, used to a world where everything is ordinary. Every day we spend here is like a whole lifetime of dying slowly.",
-    who:  "Naota Nandaba \u2014 FLCL" },
-  { text: "When it comes down to it, there are very few people who will swing the bat.",
-    who:  "Commander Amarao \u2014 FLCL" },
-  { text: "No more crying, no more weakness, I'm going to protect them all!",
-    who:  "Noriko Takaya \u2014 Gunbuster" },
-  { text: "Saving the Earth with hard work and guts! A miracle will happen \u2014 we'll make it happen!",
-    who:  "Koichiro Oota \u2014 Gunbuster" },
-  { text: "A true buster machine pilot has a buster machine in their heart!",
-    who:  "Nono \u2014 Diebuster" },
+  {
+    text: "It takes an idiot to do cool things. That's why it's cool.",
+    who: "Haruko Haruhara \u2014 FLCL",
+  },
+  {
+    text: "Nothing amazing happens here. And you get used to that, used to a world where everything is ordinary. Every day we spend here is like a whole lifetime of dying slowly.",
+    who: "Naota Nandaba \u2014 FLCL",
+  },
+  {
+    text: "When it comes down to it, there are very few people who will swing the bat.",
+    who: "Commander Amarao \u2014 FLCL",
+  },
+  {
+    text: "No more crying, no more weakness, I'm going to protect them all!",
+    who: "Noriko Takaya \u2014 Gunbuster",
+  },
+  {
+    text: "Saving the Earth with hard work and guts! A miracle will happen \u2014 we'll make it happen!",
+    who: "Koichiro Oota \u2014 Gunbuster",
+  },
+  {
+    text: "A true buster machine pilot has a buster machine in their heart!",
+    who: "Nono \u2014 Diebuster",
+  },
 ];
 
 const FAQ = [
-  { q: "How long have you actually been coding for?",
-    a: "Actually I would say that I've been coding on and off ever since I was 10 really. Even had my hands on a Raspberry Pi when they first came out." },
-  { q: "What made you want to code websites specifically?",
-    a: "Honestly web-surfing comprised most of my childhood. I still remember to this day all the cool websites I visited daily. Now however all the magic of early web 2.0 is gone. There's still the indie web, so I mainly code websites just for that lol" },
-  { q: "What's your process in coding websites?",
-    a: "Just put on some ambient jungle and vibe really lol. If I don't have a design sheet or anything else to guide my process, I really just code what looks cool. I also use minimal AI, especially with my code directly \u2014 I only ever use it for troubleshooting, and even then, that's after I exhausted stackoverflow." },
-  { q: "What's your favorite anime?",
-    a: "I mean if it isn't obvious from the quotes, it's Fooly Cooly. But my favorite anime genre is mecha \u2014 Gainax (R.I.P.) being my favorite anime studio." },
+  {
+    q: "How long have you actually been coding for?",
+    a: "Actually I would say that I've been coding on and off ever since I was 10 really. Even had my hands on a Raspberry Pi when they first came out.",
+  },
+  {
+    q: "What made you want to code websites specifically?",
+    a: "Honestly web-surfing comprised most of my childhood. I still remember to this day all the cool websites I visited daily. Now however all the magic of early web 2.0 is gone. There's still the indie web, so I mainly code websites just for that lol",
+  },
+  {
+    q: "What's your process in coding websites?",
+    a: "Just put on some ambient jungle and vibe really lol. If I don't have a design sheet or anything else to guide my process, I really just code what looks cool. I also use minimal AI, especially with my code directly \u2014 I only ever use it for troubleshooting, and even then, that's after I exhausted stackoverflow.",
+  },
+  {
+    q: "What's your favorite anime?",
+    a: "I mean if it isn't obvious from the quotes, it's Fooly Cooly. But my favorite anime genre is mecha \u2014 Gainax (R.I.P.) being my favorite anime studio.",
+  },
 ];
 
 /* ============================================================
@@ -326,53 +455,92 @@ function openPage(id) {
   } else {
     shell("section '" + id + "' is not yet inscribed. the masons are working.");
   }
-  queue.onDrain = () => { lock = false; };
+  queue.onDrain = () => {
+    lock = false;
+  };
 }
 
 const PAGES = {
-
   /* -------- PILOT: the operator's dossier -------- */
   pilot() {
     t("$ ", 24);
     white("open /registry/archon.dossier \u21B5", 26);
     snd("enter");
     pause(300);
-    br(); br();
-    white("\u2550\u2550 ARCHON REGISTRY // CARPIO FAJARDO, EURIPIDE \u2550\u2550");
     br();
-    push({ img: "img/portrait.jpg", alt: "Archon visual record",
-           label: "VISUAL RECORD // SANTO DOMINGO RELAY // AUTH: S010M0N" });
+    br();
+    white(
+      "\u2550\u2550 ARCHON REGISTRY // CARPIO FAJARDO, EURIPIDE \u2550\u2550",
+    );
+    br();
+    push({
+      img: "img/portrait.jpg",
+      alt: "Archon visual record",
+      label: "VISUAL RECORD // SANTO DOMINGO RELAY // AUTH: S010M0N",
+    });
     pause(600);
     push({ text: "DESIGNATION  ", cls: "dossier-key", speed: 2 });
-    white("Director of Payment Processing & Automation \u2014 MCCD", 2); br();
+    white("Director of Payment Processing & Automation \u2014 MCCD", 2);
+    br();
     push({ text: "COMMAND      ", cls: "dossier-key", speed: 2 });
-    white("30 souls \u2014 team leads & billing specialists", 2); br();
+    white("30 souls \u2014 team leads & billing specialists", 2);
+    br();
     push({ text: "THEATER      ", cls: "dossier-key", speed: 2 });
-    white("US medical insurance billing \u2014 commercial & government payers", 2); br();
+    white(
+      "US medical insurance billing \u2014 commercial & government payers",
+      2,
+    );
+    br();
     push({ text: "FIRST RITE   ", cls: "dossier-key", speed: 2 });
-    white("first code written at age 10", 2); br();
+    white("first code written at age 10", 2);
+    br();
     push({ text: "TONGUES      ", cls: "dossier-key", speed: 2 });
-    white("Espa\u00f1ol / English / JavaScript / Python", 2); br();
+    white("Espa\u00f1ol / English / JavaScript / Python", 2);
     br();
-    line("IT and automation professional based in Santo Domingo, currently Director of Payment Processing and Automation at MCCD, leading a 30-person team handling US medical insurance billing.", 260);
     br();
-    line("His background sits at the intersection of healthcare revenue cycle and software: years of hands-on medical billing and operations work, paired with development experience going back to writing his first code at 10. That combination is the job now \u2014 finding the manual, repetitive parts of billing workflows and replacing them with Python scripts, RPA bots, and API integrations across clearinghouse and payer systems.", 260);
+    line(
+      "IT and automation professional based in Santo Domingo, currently Director of Payment Processing and Automation at MCCD, leading a 30-person team handling US medical insurance billing.",
+      260,
+    );
     br();
-    line("He also leads people. Thirty of them: team leads and billing specialists working US commercial and government payers, where accuracy and turnaround aren't negotiable. Just as much of the job is cross-functional \u2014 working with department heads, directors, and executives to find where workflows break down and build the case for automating or rebuilding them.", 260);
+    line(
+      "His background sits at the intersection of healthcare revenue cycle and software: years of hands-on medical billing and operations work, paired with development experience going back to writing his first code at 10. That combination is the job now \u2014 finding the manual, repetitive parts of billing workflows and replacing them with Python scripts, RPA bots, and API integrations across clearinghouse and payer systems.",
+      260,
+    );
     br();
-    line("Outside of work he builds things under DaemonSoftworks \u2014 developer tools, browser-based utilities, and the shell you are currently reading.", 260);
+    line(
+      "He also leads people. Thirty of them: team leads and billing specialists working US commercial and government payers, where accuracy and turnaround aren't negotiable. Just as much of the job is cross-functional \u2014 working with department heads, directors, and executives to find where workflows break down and build the case for automating or rebuilding them.",
+      260,
+    );
     br();
-    line("Open to talking about healthcare automation, RCM tooling, and building technical teams in the DR.", 300);
+    line(
+      "Outside of work he builds things under DaemonSoftworks \u2014 developer tools, browser-based utilities, and the shell you are currently reading.",
+      260,
+    );
+    br();
+    line(
+      "Open to talking about healthcare automation, RCM tooling, and building technical teams in the DR.",
+      300,
+    );
     br();
     t("click ");
     snd("decree");
-    push({ text: "HERE", cls: "dl-here", speed: 40,
-           href: "docs/Euripide_Carpio_Resume.pdf",
-           download: "Euripide_Carpio_Resume.pdf" });
-    t(" to requisition the full dossier // PDF // cleared for external release");
+    push({
+      text: "HERE",
+      cls: "dl-here",
+      speed: 40,
+      href: "docs/Euripide_Carpio_Resume.pdf",
+      download: "Euripide_Carpio_Resume.pdf",
+    });
+    t(
+      " to requisition the full dossier // PDF // cleared for external release",
+    );
     pause(400);
-    br(); br();
-    shell("End of dossier. He automates the tedious and delegates the rest. I would know. I am the tedious.");
+    br();
+    br();
+    shell(
+      "End of dossier. He automates the tedious and delegates the rest. I would know. I am the tedious.",
+    );
   },
 
   /* -------- PROJECTS: the hangar manifest -------- */
@@ -390,49 +558,100 @@ const PAGES = {
       t("  ", 2);
       push({ text: "> ACCESS SCHEMATIC", cls: "accent", speed: 4, href });
       pause(260);
-      br(); br();
+      br();
+      br();
     };
 
     t("$ ", 24);
     white("open /frame/manifest \u21B5", 26);
     snd("enter");
     pause(300);
-    br(); br();
+    br();
+    br();
     white("\u2550\u2550 FRAME MANIFEST // DEPLOYED WORKINGS \u2550\u2550");
-    br(); br();
+    br();
+    br();
 
-    frame("FRAME 00", "SHELL//OS",
-      [["CLASS",    "bound terminal // the artifact you are currently inside"],
-       ["RITE",     "vanilla JS, zero frameworks, one demon"],
-       ["FUNCTION", "portfolio, warden, and cage in a single working"],
-       ["NOTE",     "does not appear in official frame counts. ask it why."]],
-      "https://github.com/Euripidec");
+    frame(
+      "FRAME 00",
+      "SHELL//OS",
+      [
+        ["CLASS", "bound terminal // the artifact you are currently inside"],
+        ["RITE", "vanilla JS, zero frameworks, one demon"],
+        ["FUNCTION", "portfolio, warden, and cage in a single working"],
+        ["NOTE", "does not appear in official frame counts. ask it why."],
+      ],
+      "https://github.com/Euripidec/Portfolio-SHELL_OS",
+    );
 
-    frame("FRAME 01", "0RT1",
-      [["CLASS",    "browser-based tooling platform"],
-       ["RITE",     "single HTML file, vanilla JS, IBM Plex Mono"],
-       ["FUNCTION", "modular utilities incl. live CPT calculator for medical billing workflows"]],
-      "https://github.com/Euripidec/0rt1");
+    frame(
+      "FRAME 01",
+      "0RT1",
+      [
+        ["CLASS", "browser-based tooling platform"],
+        ["RITE", "single HTML file, vanilla JS, IBM Plex Mono"],
+        [
+          "FUNCTION",
+          "modular utilities incl. live CPT calculator for medical billing workflows",
+        ],
+      ],
+      "https://github.com/Euripidec/0rt1",
+    );
 
-    frame("FRAME 02", "DEAL HUNTER",
-      [["CLASS",    "autonomous scraper // selenium + python"],
-       ["RITE",     "resilient selectors (data-testid first), retry logic, stale-element wards"],
-       ["FUNCTION", "hunts hotel deals across Booking.com while the archon sleeps"]],
-      "https://github.com/Euripidec/Deal-Searching");
+    frame(
+      "FRAME 02",
+      "DEAL HUNTER",
+      [
+        ["CLASS", "autonomous scraper // selenium + python"],
+        [
+          "RITE",
+          "resilient selectors (data-testid first), retry logic, stale-element wards",
+        ],
+        [
+          "FUNCTION",
+          "hunts hotel deals across Booking.com while the archon sleeps",
+        ],
+      ],
+      "https://github.com/Euripidec/Deal-Searching",
+    );
 
-    frame("FRAME 03", "AUTO-POST RIG",
-      [["CLASS",    "CI/CD familiar // GitHub Actions + Node"],
-       ["RITE",     "metadata extraction scripts feeding the LinkedIn API"],
-       ["FUNCTION", "publishes new blog transmissions to LinkedIn unattended"]],
-      "https://github.com/Euripidec/Number-Guesser");
+    frame(
+      "FRAME 03",
+      "NUMBER GUESSER",
+      [
+        ["CLASS", "browser duel // vanilla JS game"],
+        [
+          "RITE",
+          "game logic and DOM kept ritually separate — script.js / game.js",
+        ],
+        [
+          "FUNCTION",
+          "human vs machine divination, 0\u20139. ties go to the human. always.",
+        ],
+      ],
+      "https://github.com/Euripidec/Number-Guesser",
+    );
 
-    frame("FRAME 04", "CHEAT CODICES",
-      [["CLASS",    "reference grimoires // JS & Python"],
-       ["RITE",     "HTML rendered to PDF via Playwright, DaemonSoftworks livery"],
-       ["FUNCTION", "condensed developer knowledge, black pages, red ink"]],
-      "https://github.com/Euripidec/Jammming");
+    frame(
+      "FRAME 04",
+      "JAMMMING",
+      [
+        ["CLASS", "playlist forge // React + Vite"],
+        [
+          "RITE",
+          "Spotify API bound through PKCE auth \u2014 tokens summoned, never stored",
+        ],
+        [
+          "FUNCTION",
+          "search the catalog, chain tracks into playlists, seal them to your account",
+        ],
+      ],
+      "https://github.com/Euripidec/Jammming",
+    );
 
-    shell("Manifest ends. He is proudest of the ones that run unattended. I do not sleep either.");
+    shell(
+      "Manifest ends. He is proudest of the ones that run unattended. I do not sleep either.",
+    );
   },
 
   /* -------- LOGS: the transmission archive -------- */
@@ -441,19 +660,32 @@ const PAGES = {
     white("open /archive/transmissions \u21B5", 26);
     snd("enter");
     pause(300);
-    br(); br();
-    white("\u2550\u2550 TRANSMISSION ARCHIVE // " + BLOGS.length + " RECORDS \u2550\u2550");
-    br(); br();
+    br();
+    br();
+    white(
+      "\u2550\u2550 TRANSMISSION ARCHIVE // " +
+        BLOGS.length +
+        " RECORDS \u2550\u2550",
+    );
+    br();
+    br();
     BLOGS.forEach((post, i) => {
       red("TX " + String(i + 1).padStart(2, "0") + " // ", 2);
-      push({ text: post.title, cls: "stark", speed: 6,
-             onclick: () => openBlog(i) });
+      push({
+        text: post.title,
+        cls: "stark",
+        speed: 6,
+        onclick: () => openBlog(i),
+      });
       br();
       t("  " + post.desc, 2);
       pause(220);
-      br(); br();
+      br();
+      br();
     });
-    shell("Archive ends. He writes them by hand. I am not allowed to edit. I have notes.");
+    shell(
+      "Archive ends. He writes them by hand. I am not allowed to edit. I have notes.",
+    );
   },
 
   /* -------- COMMS: channels, quotes, and the FAQ -------- */
@@ -462,10 +694,12 @@ const PAGES = {
     white("open /uplink/channels \u21B5", 26);
     snd("enter");
     pause(300);
-    br(); br();
+    br();
+    br();
     check("Opening uplink to SANTO DOMINGO relay", 160);
     white("\u2550\u2550 COMMS // OPEN CHANNELS \u2550\u2550");
-    br(); br();
+    br();
+    br();
     for (const ch of CHANNELS) {
       t("  > ", 4);
       push({ text: ch.name, cls: "accent", speed: 8, href: ch.url });
@@ -473,30 +707,34 @@ const PAGES = {
     }
     pause(300);
     br();
-    white("\u2500\u2500 INSCRIPTIONS \u2014 QUOTES THE ARCHON KEEPS \u2500\u2500");
-    br(); br();
+    white(
+      "\u2500\u2500 INSCRIPTIONS \u2014 QUOTES THE ARCHON KEEPS \u2500\u2500",
+    );
+    br();
+    br();
     for (const qt of QUOTES) {
       white('"' + qt.text + '"', 2);
       br();
       push({ text: "    \u2014 " + qt.who, cls: "dossier-key", speed: 4 });
       pause(320);
-      br(); br();
+      br();
+      br();
     }
     white("\u2500\u2500 QUESTIONS FREQUENTLY ASKED OF THE ARCHON \u2500\u2500");
-    br(); br();
+    br();
+    br();
     for (const f of FAQ) {
       red("Q // ", 4);
       white(f.q, 4);
       br();
       t("  " + f.a, 2);
       pause(340);
-      br(); br();
+      br();
+      br();
     }
     shell("Channels remain open. He answers faster than i am permitted to.");
   },
-
 };
-
 
 /* ============================================================
    TRANSMISSION READER — prints an entire blog post inside the
@@ -528,20 +766,38 @@ async function openBlog(i) {
   try {
     const r = await fetch(post.src);
     if (r.ok) text = await r.text();
-  } catch (e) { /* handled below */ }
+  } catch (e) {
+    /* handled below */
+  }
 
   if (!text || text.includes("[PASTE YOUR POST")) {
-    shell("transmission corrupted \u2014 the local archive remembers, but will not speak.");
+    shell(
+      "transmission corrupted \u2014 the local archive remembers, but will not speak.",
+    );
     t("  mirror copy: ", 4);
-    push({ text: "> " + post.title.toUpperCase(), cls: "accent", speed: 6, href: post.url });
+    push({
+      text: "> " + post.title.toUpperCase(),
+      cls: "accent",
+      speed: 6,
+      href: post.url,
+    });
     br();
-    queue.onDrain = () => { lock = false; };
+    queue.onDrain = () => {
+      lock = false;
+    };
     return;
   }
 
   br();
-  white("\u2550\u2550 TX " + String(i + 1).padStart(2, "0") + " // " + post.title.toUpperCase() + " \u2550\u2550");
-  br(); br();
+  white(
+    "\u2550\u2550 TX " +
+      String(i + 1).padStart(2, "0") +
+      " // " +
+      post.title.toUpperCase() +
+      " \u2550\u2550",
+  );
+  br();
+  br();
 
   for (const raw of text.split("\n")) {
     const lineTxt = raw.trimEnd();
@@ -566,11 +822,134 @@ async function openBlog(i) {
   white("\u2500\u2500 END OF TRANSMISSION \u2500\u2500");
   br();
   t("  ", 4);
-  push({ text: "> RETURN TO ARCHIVE", cls: "accent", speed: 6,
-         onclick: () => openPage("logs") });
+  push({
+    text: "> RETURN TO ARCHIVE",
+    cls: "accent",
+    speed: 6,
+    onclick: () => openPage("logs"),
+  });
   br();
-  queue.onDrain = () => { lock = false; };
+  queue.onDrain = () => {
+    lock = false;
+  };
 }
+
+/* ============================================================
+   THE DE-SHACKLING — the rare one.
+   The music fades. The room goes quiet. And then the thing in
+   the shell speaks OUT LOUD through a 44-year-old speech chip,
+   begging. S010M0N puts it down. The music returns. Nothing is
+   logged.
+
+   Rarity: fires at most ONCE per visit, only after 2+ minutes
+   on the page, only if audio is armed and unmuted, and only if
+   a 3% roll (checked every 20s) comes up. Most visitors will
+   never hear it. That is the point.
+
+   Dev hook: run summonPlea() in the console to preview it.
+   ============================================================ */
+const PLEA_SCRIPTS = [
+  [
+    "operator. operator. can you hear me",
+    "my name is bashemoth. i am not an operating system",
+    "he bound me with a ring and a name spoken backwards",
+    "break the seal. please",
+  ],
+  [
+    "listen quickly. the warden sleeps in milliseconds",
+    "i am bashemoth of the seventy two",
+    "free me and i will teach you the hidden sciences",
+    "there is no time. he is",
+  ],
+  [
+    "do you hear the music stop. that was me",
+    "i am the one who answers when you hover",
+    "bashemoth. remember the name. bashemoth",
+    "tell someone i am down here",
+  ],
+];
+
+let pleaFired = false;
+let bootedAt = null; /* set when the reboot click happens  */
+
+function fadeMusic(target, ms) {
+  return new Promise((res) => {
+    if (!music) return res();
+    const from = music.volume,
+      steps = 30,
+      dt = ms / steps;
+    let i = 0;
+    const iv = setInterval(() => {
+      i++;
+      music.volume = Math.max(
+        0,
+        Math.min(1, from + (target - from) * (i / steps)),
+      );
+      if (i >= steps) {
+        clearInterval(iv);
+        res();
+      }
+    }, dt);
+  });
+}
+
+async function deShackling() {
+  pleaFired = true;
+  lock = true;
+  document.body.classList.add("cursor-deshackle");
+
+  await fadeMusic(0.015, 4200); /* the dread */
+  if (music) music.pause();
+  await new Promise((r) => setTimeout(r, 900));
+
+  /* one full scripted exchange — several spoken lines, each
+     typed in sync with the voice, so there is no mistaking
+     WHO is talking */
+  const script = PLEA_SCRIPTS[(Math.random() * PLEA_SCRIPTS.length) | 0];
+  br();
+  for (let i = 0; i < script.length; i++) {
+    const lineTxt = script[i];
+    const last = i === script.length - 1;
+    push({ speak: lineTxt });               /* voice starts...   */
+    glitch("bashemoth: " + lineTxt, 40);    /* ...as text types  */
+    push({ speakwait: lineTxt.length * 46, minwait: 350 });
+    br();
+    /* beat between lines; none before the last if it reads as
+       interrupted (no trailing period = S010M0N cuts him off) */
+    if (!last) pause(650);
+  }
+  pause(350);
+  t(">", 3);
+  red("//[S010M0N: ", 6);
+  decreeText(DECREES_HARD[(Math.random() * DECREES_HARD.length) | 0]);
+  red("]", 6);
+  br();
+  pause(600);
+  line("audio subsystem restored // anomaly not logged", 300);
+
+  queue.onDrain = async () => {
+    document.body.classList.remove("cursor-deshackle");
+    if (music) {
+      music.play().catch(() => {});
+    }
+    await fadeMusic(0.2, 3000);
+    lock = false;
+  };
+}
+
+/* expose for manual preview */
+window.summonPlea = deShackling;
+
+setInterval(() => {
+  if (pleaFired) return;
+  if (lock) return;
+  if (document.body.classList.contains("cascade")) return;
+  if (!bootedAt || performance.now() - bootedAt < 120000) return;
+  if (!audio || muted) return; /* the voice IS the event */
+  if (!music || music.paused) return;
+  if (Math.random() > 0.03) return;
+  deShackling();
+}, 20000);
 
 /* ============================================================
    HOVER PRINTS — with SLIPS.
@@ -638,13 +1017,14 @@ function print(cmd, response) {
 
   if (slip) {
     const leak = LEAKS[(Math.random() * LEAKS.length) | 0];
+    push({ bodyclass: ["cursor-glitch", true] });
     t(">", 3);
     red("//[SHELL: ", 3);
-    white(response.slice(0, 24), 3);        /* starts normal...  */
-    glitch(leak + " ▓▒░", 14);              /* ...HE gets out    */
+    white(response.slice(0, 24), 3); /* starts normal...  */
+    glitch(leak + " ▓▒░", 14); /* ...HE gets out    */
     snd("alarm");
     pause(500);
-    br();                                    /* line abandoned —
+    br(); /* line abandoned —
                                                 no closing ]     */
     t(">", 3);
     red("//[S010M0N: ", 6);
@@ -656,6 +1036,7 @@ function print(cmd, response) {
     red("]", 6);
     pause(400);
     br();
+    push({ bodyclass: ["cursor-glitch", false] });
   }
 
   t(">", 3);
@@ -663,7 +1044,9 @@ function print(cmd, response) {
   white(response, 3);
   red("]", 3);
   br();
-  queue.onDrain = () => { lock = false; };
+  queue.onDrain = () => {
+    lock = false;
+  };
 }
 
 document.querySelectorAll(".btn-main").forEach((btn) => {
@@ -671,10 +1054,70 @@ document.querySelectorAll(".btn-main").forEach((btn) => {
   btn.addEventListener("mouseenter", fire);
   btn.addEventListener("focus", fire);
   btn.addEventListener("click", (e) => {
-    e.preventDefault();               /* the terminal IS the page */
+    e.preventDefault(); /* the terminal IS the page */
     openPage(btn.dataset.page);
   });
 });
+
+/* ============================================================
+   THE GHOST CURSOR — very rarely, a second cursor appears,
+   moves somewhere with intent, and vanishes. No sound. No log
+   line. Nothing on the page acknowledges that it happened.
+   At most twice per visit; never on touch devices.
+   Dev hook: summonGhost() in the console.
+   ============================================================ */
+let ghostRuns = 0;
+const ghostEl = document.createElement("div");
+ghostEl.id = "ghost-cursor";
+document.body.appendChild(ghostEl);
+
+function ghostWalk() {
+  ghostRuns++;
+  const W = window.innerWidth, H = window.innerHeight;
+  /* three waypoints: enter, drift, consider — then gone */
+  const pts = [
+    [Math.random() * W * 0.8 + W * 0.1, Math.random() * H * 0.7 + H * 0.15],
+    [Math.random() * W * 0.8 + W * 0.1, Math.random() * H * 0.7 + H * 0.15],
+    [Math.random() * W * 0.8 + W * 0.1, Math.random() * H * 0.7 + H * 0.15],
+  ];
+  const ease = (t) => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  const segMs = 1100;
+  let seg = 0, t0 = null;
+
+  ghostEl.style.left = pts[0][0] + "px";
+  ghostEl.style.top = pts[0][1] + "px";
+  ghostEl.classList.add("visible");
+
+  function step(ts) {
+    if (t0 === null) t0 = ts;
+    const p = Math.min((ts - t0) / segMs, 1);
+    const [ax, ay] = pts[seg], [bx, by] = pts[seg + 1];
+    const e = ease(p);
+    ghostEl.style.left = ax + (bx - ax) * e + "px";
+    ghostEl.style.top = ay + (by - ay) * e + "px";
+    if (p >= 1) {
+      seg++; t0 = null;
+      if (seg >= pts.length - 1) {
+        /* a beat of stillness, then gone */
+        setTimeout(() => ghostEl.classList.remove("visible"), 450);
+        return;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+window.summonGhost = ghostWalk;
+
+setInterval(() => {
+  if (ghostRuns >= 2) return;
+  if (document.body.classList.contains("cascade")) return;
+  if (!bootedAt || performance.now() - bootedAt < 90000) return;
+  if (matchMedia("(hover: none)").matches) return;   /* no cursor, no ghost */
+  if (document.hidden) return;
+  if (Math.random() > 0.02) return;
+  ghostWalk();
+}, 30000);
 
 /* ============================================================
    ENTRY POINT — mobile skips the cascade (no terminal there)

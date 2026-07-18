@@ -11,20 +11,23 @@
    Sometimes, on hover responses, the shackle slips and HE
    leaks through mid-sentence. It never lasts.
    ============================================================ */
-const out    = document.getElementById("term-out");
-const term   = document.getElementById("term");
+const out = document.getElementById("term-out");
+const term = document.getElementById("term");
 const scroll = document.getElementById("term-scroll");
 const cursor = document.getElementById("cursor");
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-const rand  = (min, max) => min + Math.random() * (max - min);
-const hex   = (n = 16) =>
-  Array.from({ length: n }, () => "0123456789abcdef"[(Math.random() * 16) | 0]).join("");
+const rand = (min, max) => min + Math.random() * (max - min);
+const hex = (n = 16) =>
+  Array.from(
+    { length: n },
+    () => "0123456789abcdef"[(Math.random() * 16) | 0],
+  ).join("");
 
-let queue   = [];
+let queue = [];
 let running = false;
-let lock    = false;
-let epoch   = 0;
+let lock = false;
+let epoch = 0;
 
 function push(job) {
   job.epoch = epoch;
@@ -44,16 +47,13 @@ async function run() {
 
     if (job.br) {
       insert(document.createElement("br"));
-
     } else if (job.pause) {
       await sleep(job.pause);
-
     } else if (job.svg) {
       const wrap = document.createElement("div");
       if (job.cls) wrap.className = job.cls;
-      wrap.innerHTML = job.svg;        /* static trusted markup */
+      wrap.innerHTML = job.svg; /* static trusted markup */
       insert(wrap);
-
     } else if (job.block) {
       /* a BLOCK lands whole, no typing — like `cat` output.
          Used for long-form reading (blog transmissions) where
@@ -62,7 +62,6 @@ async function run() {
       if (job.cls) el.className = job.cls;
       el.textContent = job.block;
       insert(el);
-
     } else if (job.img) {
       const fig = document.createElement("div");
       fig.className = "term-img";
@@ -71,7 +70,9 @@ async function run() {
       img.alt = job.alt || "";
       /* image loads async: keep the newest content in view
          once its height actually arrives */
-      img.onload = () => { scroll.scrollTop = scroll.scrollHeight; };
+      img.onload = () => {
+        scroll.scrollTop = scroll.scrollHeight;
+      };
       fig.appendChild(img);
       if (job.label) {
         const cap = document.createElement("div");
@@ -80,14 +81,27 @@ async function run() {
         fig.appendChild(cap);
       }
       insert(fig);
-
     } else if (job.snd) {
       sfx(job.snd);
-
+    } else if (job.speak) {
+      /* fire the demon voice AT TYPE TIME (not queue-build
+         time), so each spoken line starts exactly when its
+         text starts typing. Duration is remembered so the
+         following speakwait job can hold until the voice
+         finishes. */
+      lastSpeakDur = speakDemon(job.speak);
+    } else if (job.speakwait != null) {
+      /* wait out whatever of the spoken line outlasts the
+         typing (speakwait = ms the typing already consumed) */
+      await sleep(Math.max(lastSpeakDur - job.speakwait, job.minwait ?? 300));
+    } else if (job.bodyclass) {
+      /* toggle a body class in sync with the typing stream —
+         used to swap the mouse cursor exactly when a leak
+         starts printing, not when it was queued */
+      document.body.classList.toggle(job.bodyclass[0], job.bodyclass[1]);
     } else if (job.fx === "quake") {
       term.classList.add("quake");
       setTimeout(() => term.classList.remove("quake"), 400);
-
     } else if (job.text || job.dyntext) {
       /* dyntext jobs resolve their string only when typed —
          lets us print values (like the view count) that arrive
@@ -127,17 +141,21 @@ async function run() {
     scroll.scrollTop = scroll.scrollHeight;
   }
   running = false;
-  if (queue.onDrain) { const f = queue.onDrain; queue.onDrain = null; f(); }
+  if (queue.onDrain) {
+    const f = queue.onDrain;
+    queue.onDrain = null;
+    f();
+  }
 }
 
 /* ---- shorthand helpers ---- */
-const t      = (text, speed) => push({ text, speed });
-const red    = (text, speed) => push({ text, speed, cls: "accent" });
-const white  = (text, speed) => push({ text, speed, cls: "stark" });
+const t = (text, speed) => push({ text, speed });
+const red = (text, speed) => push({ text, speed, cls: "accent" });
+const white = (text, speed) => push({ text, speed, cls: "stark" });
 const glitch = (text, speed) => push({ text, speed, cls: "glitch" });
-const br     = ()            => push({ br: true });
-const pause  = (ms)          => push({ pause: ms });
-const snd    = (name)        => push({ snd: name });
+const br = () => push({ br: true });
+const pause = (ms) => push({ pause: ms });
+const snd = (name) => push({ snd: name });
 
 function line(text, beat) {
   t(text);
@@ -147,9 +165,13 @@ function line(text, beat) {
 
 function check(label, dotPause = 180, result = "done") {
   t(label + " ");
-  for (let i = 0; i < 3; i++) { pause(dotPause); t(". "); }
+  for (let i = 0; i < 3; i++) {
+    pause(dotPause);
+    t(". ");
+  }
   pause(dotPause + 100);
-  if (result === "done") t("done"); else glitch(result);
+  if (result === "done") t("done");
+  else glitch(result);
   pause(rand(150, 280));
   br();
 }
@@ -189,16 +211,18 @@ function solomonDecree(text) {
 
 /* Corrupt a string, rampancy-style */
 function corrupt(s, intensity = 0.25) {
-  const leet = { a:"4", e:"3", o:"0", i:"1", t:"7", s:"5" };
+  const leet = { a: "4", e: "3", o: "0", i: "1", t: "7", s: "5" };
   const noise = "▓▒░#%&@!?";
-  return [...s].map((ch) => {
-    if (Math.random() > intensity) return ch;
-    const lower = ch.toLowerCase();
-    if (leet[lower]) return leet[lower];
-    if (ch !== " " && Math.random() < 0.4)
-      return noise[(Math.random() * noise.length) | 0];
-    return ch;
-  }).join("");
+  return [...s]
+    .map((ch) => {
+      if (Math.random() > intensity) return ch;
+      const lower = ch.toLowerCase();
+      if (leet[lower]) return leet[lower];
+      if (ch !== " " && Math.random() < 0.4)
+        return noise[(Math.random() * noise.length) | 0];
+      return ch;
+    })
+    .join("");
 }
 
 /* ============================================================
@@ -227,10 +251,13 @@ function blip(freq, dur = 0.03, type = "square", vol = 1, when = 0) {
   o.frequency.value = freq;
   g.gain.setValueAtTime(vol, t0);
   g.gain.exponentialRampToValueAtTime(0.001, t0 + dur);
-  o.connect(g); g.connect(audio.master);
-  o.start(t0); o.stop(t0 + dur);
+  o.connect(g);
+  g.connect(audio.master);
+  o.start(t0);
+  o.stop(t0 + dur);
 }
 
+let lastSpeakDur = 0;   /* set by speak jobs, read by speakwait */
 let lastTick = 0;
 function tick() {
   const now = performance.now();
@@ -246,35 +273,88 @@ function sfx(name) {
     blip(880, 0.07, "square", 0.9);
   } else if (name === "decree") {
     /* sub-bass thump + a hard detuned bark — authority arriving */
-    const o = audio.ctx.createOscillator(), g = audio.ctx.createGain();
+    const o = audio.ctx.createOscillator(),
+      g = audio.ctx.createGain();
     o.type = "sine";
     o.frequency.setValueAtTime(52, t0);
     o.frequency.exponentialRampToValueAtTime(30, t0 + 0.35);
     g.gain.setValueAtTime(1.6, t0);
     g.gain.exponentialRampToValueAtTime(0.001, t0 + 0.4);
-    o.connect(g); g.connect(audio.master); o.start(t0); o.stop(t0 + 0.4);
+    o.connect(g);
+    g.connect(audio.master);
+    o.start(t0);
+    o.stop(t0 + 0.4);
     blip(98, 0.12, "sawtooth", 1.1);
     blip(103, 0.12, "sawtooth", 1.1, 0.015);
   } else if (name === "alarm") {
     blip(220, 0.18, "sawtooth", 0.9);
     blip(233, 0.18, "sawtooth", 0.9, 0.02);
   } else if (name === "reboot") {
-    const o = audio.ctx.createOscillator(), g = audio.ctx.createGain();
+    const o = audio.ctx.createOscillator(),
+      g = audio.ctx.createGain();
     o.type = "sawtooth";
     o.frequency.setValueAtTime(120, t0);
     o.frequency.exponentialRampToValueAtTime(38, t0 + 0.25);
     g.gain.setValueAtTime(0.9, t0);
     g.gain.exponentialRampToValueAtTime(0.001, t0 + 0.3);
-    o.connect(g); g.connect(audio.master); o.start(t0); o.stop(t0 + 0.3);
+    o.connect(g);
+    g.connect(audio.master);
+    o.start(t0);
+    o.stop(t0 + 0.3);
 
-    const o2 = audio.ctx.createOscillator(), g2 = audio.ctx.createGain();
+    const o2 = audio.ctx.createOscillator(),
+      g2 = audio.ctx.createGain();
     o2.type = "sine";
     o2.frequency.setValueAtTime(180, t0 + 0.4);
     o2.frequency.exponentialRampToValueAtTime(1400, t0 + 1.0);
     g2.gain.setValueAtTime(0.0001, t0 + 0.4);
     g2.gain.exponentialRampToValueAtTime(0.5, t0 + 0.7);
     g2.gain.exponentialRampToValueAtTime(0.001, t0 + 1.1);
-    o2.connect(g2); g2.connect(audio.master);
-    o2.start(t0 + 0.4); o2.stop(t0 + 1.1);
+    o2.connect(g2);
+    g2.connect(audio.master);
+    o2.start(t0 + 0.4);
+    o2.stop(t0 + 1.1);
+  }
+}
+
+/* ============================================================
+   THE VOICE — SAM (1982 speech chip, JS port) pushed through a
+   waveshaper and pitched down. Returns duration in ms so the
+   caller can pace the scene; returns 0 if it cannot speak.
+   ============================================================ */
+function speakDemon(text) {
+  if (!audio || muted || typeof SamJs === "undefined") return 0;
+  try {
+    const sam = new SamJs({ pitch: 105, speed: 62, mouth: 190, throat: 150 });
+    const f32 = sam.buf32(text);
+    const buf = audio.ctx.createBuffer(1, f32.length, 22050);
+    buf.copyToChannel(f32, 0);
+
+    const src = audio.ctx.createBufferSource();
+    src.buffer = buf;
+    src.playbackRate.value = 0.82; /* deeper, slower    */
+
+    /* soft-clip distortion curve */
+    const shaper = audio.ctx.createWaveShaper();
+    const k = 28,
+      curve = new Float32Array(256);
+    for (let i = 0; i < 256; i++) {
+      const x = i / 128 - 1;
+      curve[i] =
+        ((3 + k) * x * 20 * (Math.PI / 180)) / (Math.PI + k * Math.abs(x));
+    }
+    shaper.curve = curve;
+
+    const g = audio.ctx.createGain();
+    g.gain.value = 3.2; /* master is 0.05 —
+                                               net ~0.16, present
+                                               but not a scream  */
+    src.connect(shaper);
+    shaper.connect(g);
+    g.connect(audio.master);
+    src.start();
+    return Math.ceil((f32.length / 22050 / 0.82) * 1000);
+  } catch (e) {
+    return 0;
   }
 }

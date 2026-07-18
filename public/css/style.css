@@ -522,3 +522,50 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stark); outline
   footer { flex-wrap: wrap; height: auto; padding: 6px 10px; }
   footer .sig { display: none; }
 }
+
+/* ============================================================
+   THE HAND — custom mouse cursors, pixel-drawn like the caps.
+   Default: seashell arrow with red edge. Links: the starburst
+   pointer glyph. Text: red I-beam. Event states swap the whole
+   set via body classes.
+   ============================================================ */
+html, body {
+  cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAASCAYAAACAa1QyAAAAh0lEQVR42pWQXQ2AMAyEjwsqcIIBDEzCdE0CBjCAEJIFFRtPLPzsYN3Teu3Xa4s4ThnGRwCwggQAzsEEsnwMIG9BI8iX0ACyKv6AlIkPkJ9jCJC/S1dANp34AfaqMDkvm/TPQs6hxMO6dFUqjlPe45ZP+zO+atVDJOd1V+Wk3JUbTQ4tE6idDr9xWUluG9azAAAAAElFTkSuQmCC") 0 0, auto;
+}
+a, .btn-main, button, [role="button"], .dl-here, #audio-toggle {
+  cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAANCAYAAACgu+4kAAAAWElEQVR42mNgwAKeWbr9ZyASMBHSRIphcMXoND7AiC7w4tljuCYJKVlGgl54Zun2H5eNyOK4XEOxCygOA6yhjYtNlmHo3iIbUNUQigx78ezxf2QDWCj1AgC5y09HUYB18gAAAABJRU5ErkJggg==") 5 4, pointer;
+}
+#term-out {
+  cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAPCAYAAAAoAdW+AAAAL0lEQVR42mN8Zun2nwEKpI7vYkTmowCcEgwMDAwvnj1GkWRiwANGJQmFLSO+WAEAX6wVV8QwVn8AAAAASUVORK5CYII=") 3 7, text;
+}
+
+/* While a leak is printing — and for the whole cascade intro —
+   the visitor's own hand corrupts */
+body.cursor-glitch, body.cursor-glitch *,
+body.cascade, body.cascade * {
+  cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAUCAYAAACEYr13AAAAzUlEQVR42qWTwQ2EIBBFh4lVmGwZG9cGbMAzJ+9bjHdPnG3ABpRYBgmxCtkTRpFhMMttgHnz5w+ArRsHfywEAIhBUuDNGne5uFnjbN04vaolp+oF7gFPIZcWjmAc4PVVVQxCtYS3DQJSzpPIAnBKsgBPIJg8zIAgK5GBYNaoEpCCStrbLrqvV7VUb/mJAva2AxyHIza91BwEz8mml9pX9rK59gqfXM6T0CBJt8+ybyaeXxmlgpwC9URzl6DM8Z8nNDJsha0eSqe8YCGUBz8a1JNKhdQ1kwAAAABJRU5ErkJggg==") 0 0, auto !important;
+}
+
+/* During the de-shackling: inverted. His colors, your hand. */
+body.cursor-deshackle, body.cursor-deshackle * {
+  cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAASCAYAAACAa1QyAAAAiklEQVR42pWS0Q2AIAxEz4tDGBMHYQEXcATnYgSmMiFMAX5hDKHQ8kVbXtu7gBSfAuMhAFhBAkC+bhPIerGA/AdakG1CA7KXnIGUCiOQozUkkDPRPZAai1twFcUGLzZZ24f5ur94249laASDx7YfS50wda8C6h/b65biU6I7S3Rn6VpumqDZQNL0AraxXhOfeF2YAAAAAElFTkSuQmCC") 0 0, auto !important;
+}
+
+/* ============================================================
+   THE GHOST — a second cursor that should not exist. Slightly
+   LARGER than the real one (subliminal wrongness), drifts with
+   intent for a few seconds, vanishes. Nothing acknowledges it.
+   ============================================================ */
+#ghost-cursor {
+  position: fixed;
+  width: 17px;                 /* real arrow is 13px wide       */
+  height: 24px;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAASCAYAAACAa1QyAAAAh0lEQVR42pWQXQ2AMAyEjwsqcIIBDEzCdE0CBjCAEJIFFRtPLPzsYN3Teu3Xa4s4ThnGRwCwggQAzsEEsnwMIG9BI8iX0ACyKv6AlIkPkJ9jCJC/S1dANp34AfaqMDkvm/TPQs6hxMO6dFUqjlPe45ZP+zO+atVDJOd1V+Wk3JUbTQ4tE6idDr9xWUluG9azAAAAAElFTkSuQmCC") no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+  z-index: 9500;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  filter: drop-shadow(0 0 4px rgba(230, 57, 70, 0.35));
+}
+#ghost-cursor.visible { opacity: 0.9; }

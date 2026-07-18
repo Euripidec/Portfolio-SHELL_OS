@@ -1,3 +1,0 @@
-Drop your resume PDF here named exactly:
-  Euripide_Carpio_Resume.pdf
-(or change the href + download filename in js/lore.js, PAGES.pilot)
