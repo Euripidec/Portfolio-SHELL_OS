@@ -1,121 +1,158 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SHELL//OS</title>
-<meta name="description" content="Portfolio of Euripide Carpio Fajardo — web developer, DaemonSoftworks.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SHELL//OS</title>
+    <meta
+      name="description"
+      content="Portfolio of Euripide Carpio Fajardo — web developer, DaemonSoftworks."
+    />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
 
-<link rel="stylesheet" href="css/style.css">
-</head>
-<body class="cascade">
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="cascade">
+    <div id="blackout"></div>
 
-<div id="blackout"></div>
+    <div id="wrapper">
+      <div id="left-col">
+        <header>
+          <div class="wordmark">Euripide<span>//</span>Carpio</div>
+          <div class="tagline">
+            Portfolio — Daemon Softworks // Santo Domingo, DR
+          </div>
+        </header>
 
-<div id="wrapper">
+        <nav id="menu" aria-label="Main">
+          <div class="menu-item">
+            <a
+              class="btn-main"
+              href="#archon"
+              data-cmd="man archon"
+              data-page="pilot"
+              data-res="Archon dossier: Director of Payment Processing & Automation @ MCCD, coding since age 10, EN/ES bilingual"
+            >
+              <span class="unskew">Archon</span>
+            </a>
+            <span class="help-text">&gt; The one who binds</span>
+          </div>
 
-  <div id="left-col">
+          <div class="menu-item">
+            <a
+              class="btn-main"
+              href="#projects"
+              data-page="projects"
+              data-cmd="man projects"
+              data-res="Deployed builds: 0rt1 tooling platform, Selenium deal bot, CI/CD auto-poster, dev cheat sheets"
+            >
+              <span class="unskew">Projects</span>
+            </a>
+            <span class="help-text">&gt; Deployed builds</span>
+          </div>
 
-    <header>
-      <div class="wordmark">Euripide<span>//</span>Carpio</div>
-      <div class="tagline">Portfolio — Daemon Softworks // Santo Domingo, DR</div>
-    </header>
+          <div class="menu-item">
+            <a
+              class="btn-main"
+              href="#logs"
+              data-page="logs"
+              data-cmd="man logs"
+              data-res="Transmission archive: build logs, debugging war stories, and dispatches from the DR scene"
+            >
+              <span class="unskew">Logs</span>
+            </a>
+            <span class="help-text">&gt; Blog &amp; writeups</span>
+          </div>
 
-    <nav id="menu" aria-label="Main">
-
-      <div class="menu-item">
-        <a class="btn-main" href="#archon"
-           data-cmd="man archon"
-           data-page="pilot"
-           data-res="Archon dossier: Director of Payment Processing & Automation @ MCCD, coding since age 10, EN/ES bilingual">
-          <span class="unskew">Archon</span>
-        </a>
-        <span class="help-text">&gt; The one who binds</span>
+          <div class="menu-item">
+            <a
+              class="btn-main"
+              href="#comms"
+              data-page="comms"
+              data-cmd="man comms"
+              data-res="Open an uplink: GitHub, LinkedIn, email. Response time: fast. Status: UPLINK OPEN"
+            >
+              <span class="unskew">Comms</span>
+            </a>
+            <span class="help-text">&gt; Contact &amp; links</span>
+          </div>
+        </nav>
       </div>
 
-      <div class="menu-item">
-        <a class="btn-main" href="#projects"
-           data-page="projects"
-           data-cmd="man projects"
-           data-res="Deployed builds: 0rt1 tooling platform, Selenium deal bot, CI/CD auto-poster, dev cheat sheets">
-          <span class="unskew">Projects</span>
-        </a>
-        <span class="help-text">&gt; Deployed builds</span>
-      </div>
+      <div id="term" aria-hidden="true">
+        <div id="term-scroll">
+          <div class="term-row">
+            <!-- Left sidebar: scale + hatch/DSW end cap -->
+            <div class="ruler-col">
+              <div class="ruler"></div>
+              <svg
+                class="cap cap-left"
+                viewBox="0 0 17 16"
+                shape-rendering="crispEdges"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 0h1v1h-1zM5 0h1v1h-1zM8 0h1v1h-1zM3 1h1v1h-1zM4 1h1v1h-1zM7 1h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM6 2h1v1h-1zM1 3h1v1h-1zM2 3h1v1h-1zM5 3h1v1h-1zM1 4h1v1h-1zM2 4h1v1h-1zM4 4h1v1h-1zM1 5h1v1h-1zM2 5h1v1h-1zM3 5h1v1h-1zM4 5h1v1h-1zM5 5h1v1h-1zM6 5h1v1h-1zM7 5h1v1h-1zM8 5h1v1h-1zM9 5h1v1h-1zM10 5h1v1h-1zM11 5h1v1h-1zM12 5h1v1h-1zM13 5h1v1h-1zM14 5h1v1h-1zM1 6h1v1h-1zM2 6h1v1h-1zM3 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM7 6h1v1h-1zM8 6h1v1h-1zM9 6h1v1h-1zM10 6h1v1h-1zM11 6h1v1h-1zM12 6h1v1h-1zM13 6h1v1h-1zM14 6h1v1h-1zM15 6h1v1h-1zM1 9h1v1h-1zM2 9h1v1h-1zM5 9h1v1h-1zM6 9h1v1h-1zM9 9h1v1h-1zM13 9h1v1h-1zM1 10h1v1h-1zM3 10h1v1h-1zM5 10h1v1h-1zM9 10h1v1h-1zM13 10h1v1h-1zM1 11h1v1h-1zM3 11h1v1h-1zM6 11h1v1h-1zM9 11h1v1h-1zM11 11h1v1h-1zM13 11h1v1h-1zM1 12h1v1h-1zM3 12h1v1h-1zM7 12h1v1h-1zM9 12h1v1h-1zM11 12h1v1h-1zM13 12h1v1h-1zM1 13h1v1h-1zM2 13h1v1h-1zM5 13h1v1h-1zM6 13h1v1h-1zM10 13h1v1h-1zM12 13h1v1h-1z"
+                />
+              </svg>
+            </div>
 
-      <div class="menu-item">
-        <a class="btn-main" href="#logs"
-           data-page="logs"
-           data-cmd="man logs"
-           data-res="Transmission archive: build logs, debugging war stories, and dispatches from the DR scene">
-          <span class="unskew">Logs</span>
-        </a>
-        <span class="help-text">&gt; Blog &amp; writeups</span>
-      </div>
+            <div id="term-out"><span id="cursor"></span></div>
 
-      <div class="menu-item">
-        <a class="btn-main" href="#comms"
-           data-page="comms"
-           data-cmd="man comms"
-           data-res="Open an uplink: GitHub, LinkedIn, email. Response time: fast. Status: UPLINK OPEN">
-          <span class="unskew">Comms</span>
-        </a>
-        <span class="help-text">&gt; Contact &amp; links</span>
-      </div>
-
-    </nav>
-  </div>
-
-  <div id="term" aria-hidden="true">
-    <div id="term-scroll">
-      <div class="term-row">
-
-        <!-- Left sidebar: scale + hatch/DSW end cap -->
-        <div class="ruler-col">
-          <div class="ruler"></div>
-          <svg class="cap cap-left" viewBox="0 0 17 16" shape-rendering="crispEdges" aria-hidden="true">
-        <path d="M4 0h1v1h-1zM5 0h1v1h-1zM8 0h1v1h-1zM3 1h1v1h-1zM4 1h1v1h-1zM7 1h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM6 2h1v1h-1zM1 3h1v1h-1zM2 3h1v1h-1zM5 3h1v1h-1zM1 4h1v1h-1zM2 4h1v1h-1zM4 4h1v1h-1zM1 5h1v1h-1zM2 5h1v1h-1zM3 5h1v1h-1zM4 5h1v1h-1zM5 5h1v1h-1zM6 5h1v1h-1zM7 5h1v1h-1zM8 5h1v1h-1zM9 5h1v1h-1zM10 5h1v1h-1zM11 5h1v1h-1zM12 5h1v1h-1zM13 5h1v1h-1zM14 5h1v1h-1zM1 6h1v1h-1zM2 6h1v1h-1zM3 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM7 6h1v1h-1zM8 6h1v1h-1zM9 6h1v1h-1zM10 6h1v1h-1zM11 6h1v1h-1zM12 6h1v1h-1zM13 6h1v1h-1zM14 6h1v1h-1zM15 6h1v1h-1zM1 9h1v1h-1zM2 9h1v1h-1zM5 9h1v1h-1zM6 9h1v1h-1zM9 9h1v1h-1zM13 9h1v1h-1zM1 10h1v1h-1zM3 10h1v1h-1zM5 10h1v1h-1zM9 10h1v1h-1zM13 10h1v1h-1zM1 11h1v1h-1zM3 11h1v1h-1zM6 11h1v1h-1zM9 11h1v1h-1zM11 11h1v1h-1zM13 11h1v1h-1zM1 12h1v1h-1zM3 12h1v1h-1zM7 12h1v1h-1zM9 12h1v1h-1zM11 12h1v1h-1zM13 12h1v1h-1zM1 13h1v1h-1zM2 13h1v1h-1zM5 13h1v1h-1zM6 13h1v1h-1zM10 13h1v1h-1zM12 13h1v1h-1z"/>
-          </svg>
+            <!-- Right sidebar: scale + red pointer end cap -->
+            <div class="ruler-col">
+              <div class="ruler"></div>
+              <svg
+                class="cap cap-right"
+                viewBox="0 0 17 16"
+                shape-rendering="crispEdges"
+                aria-hidden="true"
+              >
+                <path
+                  d="M13 1h1v1h-1zM14 1h1v1h-1zM15 1h1v1h-1zM14 2h1v1h-1zM15 2h1v1h-1zM15 3h1v1h-1zM15 4h1v1h-1zM15 5h1v1h-1zM15 6h1v1h-1zM4 7h1v1h-1zM14 7h1v1h-1zM15 7h1v1h-1zM3 8h1v1h-1zM4 8h1v1h-1zM5 8h1v1h-1zM13 8h1v1h-1zM14 8h1v1h-1zM15 8h1v1h-1zM2 9h1v1h-1zM4 9h1v1h-1zM6 9h1v1h-1zM12 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM1 10h1v1h-1zM2 10h1v1h-1zM4 10h1v1h-1zM6 10h1v1h-1zM7 10h1v1h-1zM11 10h1v1h-1zM12 10h1v1h-1zM14 10h1v1h-1zM0 11h1v1h-1zM4 11h1v1h-1zM9 11h1v1h-1zM10 11h1v1h-1zM11 11h1v1h-1zM12 11h1v1h-1zM1 12h1v1h-1zM2 12h1v1h-1zM4 12h1v1h-1zM6 12h1v1h-1zM7 12h1v1h-1zM2 13h1v1h-1zM4 13h1v1h-1zM6 13h1v1h-1zM3 14h1v1h-1zM4 14h1v1h-1zM5 14h1v1h-1zM4 15h1v1h-1z"
+                />
+              </svg>
+            </div>
+          </div>
         </div>
-
-        <div id="term-out"><span id="cursor"></span></div>
-
-        <!-- Right sidebar: scale + red pointer end cap -->
-        <div class="ruler-col">
-          <div class="ruler"></div>
-          <svg class="cap cap-right" viewBox="0 0 17 16" shape-rendering="crispEdges" aria-hidden="true">
-        <path d="M13 1h1v1h-1zM14 1h1v1h-1zM15 1h1v1h-1zM14 2h1v1h-1zM15 2h1v1h-1zM15 3h1v1h-1zM15 4h1v1h-1zM15 5h1v1h-1zM15 6h1v1h-1zM4 7h1v1h-1zM14 7h1v1h-1zM15 7h1v1h-1zM3 8h1v1h-1zM4 8h1v1h-1zM5 8h1v1h-1zM13 8h1v1h-1zM14 8h1v1h-1zM15 8h1v1h-1zM2 9h1v1h-1zM4 9h1v1h-1zM6 9h1v1h-1zM12 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM1 10h1v1h-1zM2 10h1v1h-1zM4 10h1v1h-1zM6 10h1v1h-1zM7 10h1v1h-1zM11 10h1v1h-1zM12 10h1v1h-1zM14 10h1v1h-1zM0 11h1v1h-1zM4 11h1v1h-1zM9 11h1v1h-1zM10 11h1v1h-1zM11 11h1v1h-1zM12 11h1v1h-1zM1 12h1v1h-1zM2 12h1v1h-1zM4 12h1v1h-1zM6 12h1v1h-1zM7 12h1v1h-1zM2 13h1v1h-1zM4 13h1v1h-1zM6 13h1v1h-1zM3 14h1v1h-1zM4 14h1v1h-1zM5 14h1v1h-1zM4 15h1v1h-1z"/>
-          </svg>
-        </div>
-
       </div>
     </div>
-  </div>
 
-</div>
+    <footer>
+      <span class="sig">SHELL//OS v2.0 // S010M0N WATCHES</span>
+      <span class="spacer"></span>
+      <a href="https://github.com/Euripidec" target="_blank" rel="noopener"
+        >GitHub</a
+      >
+      <a
+        href="hhttps://neocities.org/"
+        target="_blank"
+        rel="noopener"
+        >Neocities</a
+      >
+      <a href="mailto:euripidec@gmail.com">Email</a>
+      <a href="#" id="audio-toggle">Audio: On</a>
+    </footer>
 
-<footer>
-  <span class="sig">SHELL//OS v2.0 // S010M0N WATCHES</span>
-  <span class="spacer"></span>
-  <a href="https://github.com/Euripidec" target="_blank" rel="noopener">GitHub</a>
-  <a href="https://euripidecarpio.neocities.org" target="_blank" rel="noopener">Neocities</a>
-  <a href="mailto:you@example.com">Email</a>
-  <a href="#" id="audio-toggle">Audio: On</a>
-</footer>
-
-<!-- GoatCounter visit counting (free: goatcounter.com).
+    <!-- GoatCounter visit counting (free: goatcounter.com).
      Fill in your code and uncomment — this script COUNTS each visit;
      js/lore.js READS the total and has SHELL print it in the boot log.
 <script data-goatcounter="https://YOURCODE.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 -->
+    <script
+      data-goatcounter="https://euripide.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"
+    ></script>
 
-<script src="js/engine.js"></script>
-<script src="js/lore.js"></script>
-
-</body>
+    <script src="js/engine.js"></script>
+    <script src="js/lore.js"></script>
+  </body>
 </html>

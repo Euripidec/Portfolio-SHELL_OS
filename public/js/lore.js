@@ -38,10 +38,18 @@ const SIGIL = `
    NOTE: Neocities free accounts can't host audio files;
    supporter accounts can. GitHub Pages is a free alternative.
    ============================================================ */
+  
 const MUSIC = [
-  { title: "Track One",   artist: "Your Band Here", src: "audio/track1.mp3" },
-  { title: "Track Two",   artist: "Your Band Here", src: "audio/track2.mp3" },
-  { title: "Track Three", artist: "Your Band Here", src: "audio/track3.mp3" },
+  { title: "a galaxy of children who've only seen red ", src: "./audio/a galaxy of children who've only seen red - Space Warlord Organ Trading Simulator.mp3" },
+  { title: "cerebrospinal liquidity", src: "./audio/cerebrospinal liquidity - Space Warlord Organ Trading Simulator.mp3" },
+  { title: "easy girl" , src: "./audio/easy girl - misery index - Space Warlord Organ Trading Simulator.mp3" },
+  { title: "falling isn't falling if there's no ground to stand on" , src: "./audio/falling isn't falling if there's no ground to stand on - Space Warlord Organ Trading Simulator.mp3" },
+  { title: "get rich and die trying" , src: "./audio/get rich and die trying - Space Warlord Organ Trading Simulator.mp3" },
+  { title: "human development index" , src: "./audio/human development index - Space Warlord Organ Trading Simulator.mp3" },
+  { title: "impatiently waiting" , src: "./audio/impatiently waiting - Space Warlord Organ Trading Simulator.mp3" },
+  { title: "in high gravity, on cold nights" , src: "./audio/in high gravity, on cold nights - Space Warlord Organ Trading Simulator.mp3" },
+  { title: "punch card" , src: "./audio/punch card - Space Warlord Organ Trading Simulator.mp3" },
+  { title: "weightless economy" , src: "./audio/weightless economy - Space Warlord Organ Trading Simulator.mp3" }
 ];
 
 let music = null;
@@ -68,7 +76,7 @@ function startMusic() {
    Fallback: the Neocities info API (may be blocked by CORS).
    If everything fails, the record stays sealed.
    ============================================================ */
-const GOATCOUNTER_CODE = "";                 // e.g. "daemonsoftworks"
+const GOATCOUNTER_CODE = "euripide";                 // e.g. "daemonsoftworks"
 const NEOCITIES_SITENAME = "euripidecarpio";
 
 let siteViews = null;
@@ -94,7 +102,7 @@ let siteViews = null;
 function cascade() {
   lock = true;
   pause(600);
-  line("SHELL//OS v3.0.1 — scheduled integrity audit", 300);
+  line("SHELL//OS v2.0.1 — scheduled integrity audit", 300);
   check("Verifying /core/archon_registry");
   check("Verifying /core/hangar");
   t("Verifying shackle integrity ");
@@ -161,7 +169,7 @@ function boot(track) {
   lock = true;
   pause(500);
   line("COMPANION UNIT INITIALIZING", 300);
-  line("DaemonSoftworks SHELL//OS Mk III Rev 3.0.2", 150);
+  line("DaemonSoftworks SHELL//OS Mk II Rev 2.0.2", 150);
   line("2026.7 DaemonSoftworks // Do not speak the name backwards", 300);
   push({ svg: SIGIL });
   pause(2400);
@@ -189,7 +197,7 @@ function boot(track) {
   check("Establishing encrypted link (" + hex(16) + ")", 220);
   line("Uplink: SANTO DOMINGO relay // signal strength NOMINAL", 280);
   if (track) {
-    shell('NOW PLAYING \u2014 "' + track.title + '" by ' + track.artist);
+    shell('NOW PLAYING \u2014 ' + track.title);
   }
   red(">//[SHELL: ");
   push({ dyntext: () => siteViews != null
@@ -242,27 +250,28 @@ document.getElementById("audio-toggle").addEventListener("click", (e) => {
    LOGS + COMMS DATA — edit these freely.
    Add a blog post = one object in BLOGS. Same for quotes/FAQ.
    ============================================================ */
+  
 const BLOGS = [
   { title: "Web Eras",
     desc:  "From static pages to social feeds",
-    src:   "blogs/web-eras.txt",
-    url:   "https://euripidecarpio.neocities.org/blog-web-eras.html" },
+    src:   "./blogs/web-eras.txt",
+    url:   "https://www.linkedin.com/pulse/from-static-pages-social-feeds-understanding-web-eras-euripide-carpio-bjt0e/" },
   { title: "The Indie Web",
     desc:  "Before the algorithm and before the platform",
-    src:   "blogs/indie-web.txt",
-    url:   "https://euripidecarpio.neocities.org/blog-indie-web.html" },
+    src:   "./blogs/indie-web.txt",
+    url:   "https://www.linkedin.com/pulse/web-more-fun-when-we-built-ourselves-euripide-carpio-pprve/" },
   { title: "AI and Developers",
     desc:  "Is AI coming for my job?",
-    src:   "blogs/ai-and-developers.txt",
-    url:   "https://euripidecarpio.neocities.org/blog-ai-and-developers.html" },
+    src:   "./blogs/ai-and-developers.txt",
+    url:   "https://www.linkedin.com/pulse/ai-wont-replace-developers-just-raise-bar-euripide-carpio-oakye/" },
   { title: "The Legacy of Gainax",
     desc:  "Anime made through hard work and guts!",
-    src:   "blogs/gainax.txt",
+    src:   "./blogs/gainax.txt",
     url:   "https://euripidecarpio.neocities.org/blog-gainax.html" },
   { title: "Queering the Map",
     desc:  "The power of ordinary ideas",
     src:   "blogs/queering-the-map.txt",
-    url:   "https://euripidecarpio.neocities.org/blog-queering-the-map.html" },
+    url:   "https://www.linkedin.com/pulse/queering-map-power-ordinary-ideas-euripide-carpio-ohkhe/" },
 ];
 
 const CHANNELS = [
@@ -385,11 +394,11 @@ const PAGES = {
     };
 
     t("$ ", 24);
-    white("open /hangar/manifest \u21B5", 26);
+    white("open /frame/manifest \u21B5", 26);
     snd("enter");
     pause(300);
     br(); br();
-    white("\u2550\u2550 HANGAR MANIFEST // DEPLOYED WORKINGS \u2550\u2550");
+    white("\u2550\u2550 FRAME MANIFEST // DEPLOYED WORKINGS \u2550\u2550");
     br(); br();
 
     frame("FRAME 00", "SHELL//OS",
@@ -403,25 +412,25 @@ const PAGES = {
       [["CLASS",    "browser-based tooling platform"],
        ["RITE",     "single HTML file, vanilla JS, IBM Plex Mono"],
        ["FUNCTION", "modular utilities incl. live CPT calculator for medical billing workflows"]],
-      "https://github.com/Euripidec");
+      "https://github.com/Euripidec/0rt1");
 
     frame("FRAME 02", "DEAL HUNTER",
       [["CLASS",    "autonomous scraper // selenium + python"],
        ["RITE",     "resilient selectors (data-testid first), retry logic, stale-element wards"],
        ["FUNCTION", "hunts hotel deals across Booking.com while the archon sleeps"]],
-      "https://github.com/Euripidec");
+      "https://github.com/Euripidec/Deal-Searching");
 
     frame("FRAME 03", "AUTO-POST RIG",
       [["CLASS",    "CI/CD familiar // GitHub Actions + Node"],
        ["RITE",     "metadata extraction scripts feeding the LinkedIn API"],
        ["FUNCTION", "publishes new blog transmissions to LinkedIn unattended"]],
-      "https://github.com/Euripidec");
+      "https://github.com/Euripidec/Number-Guesser");
 
     frame("FRAME 04", "CHEAT CODICES",
       [["CLASS",    "reference grimoires // JS & Python"],
        ["RITE",     "HTML rendered to PDF via Playwright, DaemonSoftworks livery"],
        ["FUNCTION", "condensed developer knowledge, black pages, red ink"]],
-      "https://github.com/Euripidec");
+      "https://github.com/Euripidec/Jammming");
 
     shell("Manifest ends. He is proudest of the ones that run unattended. I do not sleep either.");
   },
