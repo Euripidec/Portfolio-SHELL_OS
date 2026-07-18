@@ -114,7 +114,7 @@ const NEOCITIES_SITENAME = "euripidecarpio";
 let siteViews = null;
 
 (function fetchViews() {
-  fetch("https://proxy.corsfix.com/?https://neocities.org/api/info?sitename=euripidecarpio")
+  fetch("https://proxy.corsfix.com/?https://euripide.goatcounter.com/counter/TOTAL.json")
     .then((r) => {
       if (!r.ok) throw new Error("Neocities request failed");
       return r.json();
