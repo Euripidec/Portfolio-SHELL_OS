@@ -246,7 +246,7 @@ function boot(track) {
   lock = true;
   pause(500);
   line("COMPANION UNIT INITIALIZING", 300);
-  line("DaemonSoftworks SHELL//OS Mk II Rev 2.0.2", 150);
+  line("DaemonSoftworks SHELL//OS Mk II Rev 2.0.23", 150);
   line("2026.7 DaemonSoftworks // Do not speak the name backwards", 300);
   push({ svg: SIGIL });
   pause(2400);
