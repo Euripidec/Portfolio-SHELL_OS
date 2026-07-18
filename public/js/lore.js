@@ -120,8 +120,10 @@ let siteViews = null;
       return r.json();
     })
     .then((j) => {
-      if (j.result === "success") {
-        siteViews = j.info.views;
+      if (j.count) {
+        // Remove the commas from the string and parse it into an integer
+        // so that your siteViews.toLocaleString() call further down works correctly
+        siteViews = parseInt(j.count.replace(/,/g, ''), 10);
       }
     })
     .catch(() => {
