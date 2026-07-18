@@ -11,9 +11,15 @@
     <meta
       http-equiv="Content-Security-Policy"
       content="
-  script-src 'self' https://gc.zgo.at; 
-  connect-src 'self' https://euripide.goatcounter.com/count; 
-  img-src 'self' https://euripide.goatcounter.com/count;
+    default-src 'self';
+    script-src 'self' https://gc.zgo.at;
+    connect-src 'self' https://euripide.goatcounter.com;
+    style-src 'self' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com;
+    img-src 'self' data: https://euripide.goatcounter.com;
+    object-src 'none';
+    base-uri 'self';
+    frame-ancestors 'self';
 "
     />
 
