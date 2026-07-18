@@ -108,32 +108,25 @@ function startMusic() {
    Fallback: the Neocities info API (may be blocked by CORS).
    If everything fails, the record stays sealed.
    ============================================================ */
-const GOATCOUNTER_CODE = "euripide"; // e.g. "daemonsoftworks"
+
 const NEOCITIES_SITENAME = "euripidecarpio";
 
 let siteViews = null;
 
 (function fetchViews() {
-  const goat = () => {
-    if (!GOATCOUNTER_CODE) return Promise.reject();
-    return fetch(
-      "https://" + GOATCOUNTER_CODE + ".goatcounter.com/counter/TOTAL.json",
-    )
-      .then((r) => r.json())
-      .then((j) => {
-        siteViews = parseInt(String(j.count).replace(/[^0-9]/g, ""), 10);
-      });
-  };
-  const neo = () =>
-    fetch("https://neocities.org/api/info?sitename=" + NEOCITIES_SITENAME)
-      .then((r) => r.json())
-      .then((j) => {
-        if (j.result === "success") siteViews = j.info.views;
-      });
-  goat()
-    .catch(() => neo())
+  fetch("https://neocities.org/api/info?sitename=" + NEOCITIES_SITENAME)
+    .then((r) => {
+      if (!r.ok) throw new Error("Neocities request failed");
+      return r.json();
+    })
+    .then((j) => {
+      if (j.result === "success") {
+        siteViews = j.info.views;
+      }
+    })
     .catch(() => {
-      /* sealed */
+      // Record remains sealed.
+      siteViews = null;
     });
 })();
 
@@ -910,8 +903,8 @@ async function deShackling() {
   for (let i = 0; i < script.length; i++) {
     const lineTxt = script[i];
     const last = i === script.length - 1;
-    push({ speak: lineTxt });               /* voice starts...   */
-    glitch("bashemoth: " + lineTxt, 40);    /* ...as text types  */
+    push({ speak: lineTxt }); /* voice starts...   */
+    glitch("bashemoth: " + lineTxt, 40); /* ...as text types  */
     push({ speakwait: lineTxt.length * 46, minwait: 350 });
     br();
     /* beat between lines; none before the last if it reads as
@@ -1073,16 +1066,18 @@ document.body.appendChild(ghostEl);
 
 function ghostWalk() {
   ghostRuns++;
-  const W = window.innerWidth, H = window.innerHeight;
+  const W = window.innerWidth,
+    H = window.innerHeight;
   /* three waypoints: enter, drift, consider — then gone */
   const pts = [
     [Math.random() * W * 0.8 + W * 0.1, Math.random() * H * 0.7 + H * 0.15],
     [Math.random() * W * 0.8 + W * 0.1, Math.random() * H * 0.7 + H * 0.15],
     [Math.random() * W * 0.8 + W * 0.1, Math.random() * H * 0.7 + H * 0.15],
   ];
-  const ease = (t) => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  const ease = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
   const segMs = 1100;
-  let seg = 0, t0 = null;
+  let seg = 0,
+    t0 = null;
 
   ghostEl.style.left = pts[0][0] + "px";
   ghostEl.style.top = pts[0][1] + "px";
@@ -1091,12 +1086,14 @@ function ghostWalk() {
   function step(ts) {
     if (t0 === null) t0 = ts;
     const p = Math.min((ts - t0) / segMs, 1);
-    const [ax, ay] = pts[seg], [bx, by] = pts[seg + 1];
+    const [ax, ay] = pts[seg],
+      [bx, by] = pts[seg + 1];
     const e = ease(p);
     ghostEl.style.left = ax + (bx - ax) * e + "px";
     ghostEl.style.top = ay + (by - ay) * e + "px";
     if (p >= 1) {
-      seg++; t0 = null;
+      seg++;
+      t0 = null;
       if (seg >= pts.length - 1) {
         /* a beat of stillness, then gone */
         setTimeout(() => ghostEl.classList.remove("visible"), 450);
@@ -1113,7 +1110,7 @@ setInterval(() => {
   if (ghostRuns >= 2) return;
   if (document.body.classList.contains("cascade")) return;
   if (!bootedAt || performance.now() - bootedAt < 90000) return;
-  if (matchMedia("(hover: none)").matches) return;   /* no cursor, no ghost */
+  if (matchMedia("(hover: none)").matches) return; /* no cursor, no ghost */
   if (document.hidden) return;
   if (Math.random() > 0.02) return;
   ghostWalk();
