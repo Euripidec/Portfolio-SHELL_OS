@@ -144,7 +144,7 @@ let siteViews = null;
 function cascade() {
   lock = true;
   pause(600);
-  line("SHELL//OS v2.0.1 — scheduled integrity audit", 300);
+  line("SHELL//OS v2.0.23 — scheduled integrity audit", 300);
   check("Verifying /core/archon_registry");
   check("Verifying /core/hangar");
   t("Verifying shackle integrity ");
