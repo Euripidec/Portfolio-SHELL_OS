@@ -511,16 +511,100 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stark); outline
    6. MOBILE
    ============================================================ */
 @media (max-width: 900px) {
-  body { overflow: auto; }
-  #term { display: none; }
-  #left-col { width: 100%; padding-left: 24px; height: auto; min-height: calc(100vh - var(--footer-h)); }
-  .btn-main { width: 86vw; left: -54px; }
-  .unskew { left: 86px; }
-  .help-text { left: 30px; }
-  #menu { gap: 20px; justify-content: flex-start; margin-top: 40px; }
-  .menu-item { height: 100px; }
-  footer { flex-wrap: wrap; height: auto; padding: 6px 10px; }
+  /* ==========================================================
+     MOBILE — the terminal IS the site, so it stays. Layout
+     becomes a column: compact header, 2x2 button grid, and
+     the terminal filling all remaining height. dvh handles
+     mobile browser chrome correctly.
+     ========================================================== */
+  body { overflow: hidden; }
+
+  #wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+  }
+
+  #left-col {
+    position: static;
+    width: 100%;
+    height: auto;
+    flex: none;
+    padding: 14px 16px 6px;
+    transition: opacity 0.5s ease 0.4s;
+  }
+  .wordmark { font-size: 26px; }
+  .tagline { font-size: 9px; letter-spacing: 2px; margin-top: 4px; }
+
+  /* menu: 2x2 grid of compact skewed buttons */
+  #menu {
+    flex: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 14px;
+    margin: 12px 0 4px;
+    padding: 0 6px;
+  }
+  .menu-item { height: 46px; position: relative; }
+  .btn-main {
+    position: absolute;
+    inset: 0;
+    left: 0;
+    width: auto;
+    height: 46px;
+  }
+  .btn-main::before, .btn-main::after { height: 46px; }
+  .unskew {
+    left: 18px;
+    top: 9px;
+    font-size: 19px;
+    letter-spacing: 1.5px;
+  }
+  .help-text { display: none; }
+
+  /* terminal: fills the leftover column height.
+     Made a flex column itself so the scroll area sizes from
+     flex, not percentage heights — bulletproof across engines */
+  #term {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 120px;
+    width: auto;
+    margin: 6px 10px calc(var(--footer-h) + 8px);
+    transition: none;          /* no glide on mobile — snap    */
+  }
+  #term-scroll {
+    flex: 1;
+    height: auto;
+    min-height: 0;
+  }
+  #term-out { font-size: 12.5px; }
+  .term-row { gap: 8px; }
+
+  /* cascade on mobile: menu collapses, terminal goes fullscreen
+     over the blackout. The reboot snap is covered by the fade. */
+  body.cascade #left-col {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transition: none;
+  }
+  body.cascade #term {
+    position: fixed;
+    inset: 4vh 12px calc(var(--footer-h) + 12px) 12px;
+  }
+
+  footer { flex-wrap: wrap; height: auto; min-height: var(--footer-h); padding: 5px 10px; gap: 6px; }
   footer .sig { display: none; }
+  footer a { padding: 2px 8px; font-size: 10px; }
+
+  /* dossier image + sigil scale on small screens */
+  .term-img { width: min(220px, 70%); }
+  .sigil { width: min(140px, 55%); }
 }
 
 /* ============================================================

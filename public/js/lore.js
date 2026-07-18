@@ -1122,8 +1122,6 @@ setInterval(() => {
 /* ============================================================
    ENTRY POINT — mobile skips the cascade (no terminal there)
    ============================================================ */
-if (matchMedia("(max-width: 900px)").matches) {
-  document.body.classList.remove("cascade");
-} else {
-  cascade();
-}
+/* The terminal is now visible on every screen size, so the
+   cascade runs everywhere. Welcome to the shell, phone people. */
+cascade();
